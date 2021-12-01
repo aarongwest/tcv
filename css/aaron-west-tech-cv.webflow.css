@@ -1,0 +1,64 @@
+.body {
+  background-color: #333;
+  font-family: Inconsolata, monospace;
+  color: #fff;
+}
+
+.heading {
+  font-family: Inconsolata, monospace;
+  font-weight: 700;
+}
+
+.div-block {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.text-block {
+  margin-right: 40px;
+  margin-left: 40px;
+  font-family: Inconsolata, monospace;
+  font-weight: 400;
+}
+
+.heading-2 {
+  text-align: right;
+}
+
+.italic-text {
+  color: #89ac6f;
+}
+
+.italic-text-2 {
+  color: #a7a4a4;
+}
+
+.italic-text-3 {
+  color: #a7a4a4;
+}
+
+.italic-text-4 {
+  color: #a7a4a4;
+}
+
+@font-face {
+  font-family: 'Nb architekt r webfont';
+  src: url('../fonts/nb_architekt_r_bold-webfont.woff2') format('woff2'), url('../fonts/nb_architekt_r_bold-webfont.eot') format('embedded-opentype'), url('../fonts/nb_architekt_r_bold-webfont.woff') format('woff'), url('../fonts/nb_architekt_r_bold-webfont.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nb architekt r webfont';
+  src: url('../fonts/nb_architekt_r_light-webfont.woff2') format('woff2'), url('../fonts/nb_architekt_r_light-webfont.eot') format('embedded-opentype'), url('../fonts/nb_architekt_r_light-webfont.woff') format('woff'), url('../fonts/nb_architekt_r_light-webfont.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nb architekt r webfont';
+  src: url('../fonts/nb_architekt_r_regular-webfont.woff2') format('woff2'), url('../fonts/nb_architekt_r_regular-webfont.eot') format('embedded-opentype'), url('../fonts/nb_architekt_r_regular-webfont.woff') format('woff'), url('../fonts/nb_architekt_r_regular-webfont.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
