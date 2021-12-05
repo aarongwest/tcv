@@ -41,6 +41,124 @@
   color: #a7a4a4;
 }
 
+.text-span {
+  background-color: #ff0579;
+}
+
+.text-span-2 {
+  background-color: #ff0579;
+}
+
+.section {
+  background-color: rgba(94, 235, 143, 0.89);
+}
+
+.heading-3 {
+  margin-top: 3px;
+  margin-bottom: 0px;
+  padding: 10px;
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-size: 33px;
+  line-height: 33px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
+.body-2 {
+  padding-bottom: 1px;
+  background-color: #000;
+  font-family: 'Nb architekt r webfont', sans-serif;
+}
+
+.section-2 {
+  min-height: 0px;
+  background-color: #5eeb8f;
+}
+
+.navbar {
+  background-color: rgba(94, 235, 143, 0.89);
+}
+
+.nav-menu {
+  display: inline;
+  margin-top: 3px;
+}
+
+.section-3 {
+  min-height: 77px;
+  margin: 40px 40px 60px;
+  border-radius: 5px;
+  background-color: #333;
+}
+
+.text-block-2 {
+  margin-bottom: 60px;
+  padding: 10px;
+}
+
+.heading-4 {
+  color: #5eeb8f;
+}
+
+.list {
+  color: #5eeb8f;
+}
+
+.column {
+  border-right: 1px solid #000;
+  text-align: left;
+}
+
+.columns {
+  padding: 20px;
+}
+
+.image {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.column-2 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.column-3 {
+  color: #5eeb8f;
+}
+
+@media screen and (max-width: 991px) {
+  .column {
+    border-right-style: none;
+  }
+
+  .image {
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .text-block-3 {
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .image {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .heading-4 {
+    font-size: 25px;
+    line-height: 33px;
+  }
+
+  .heading-5 {
+    font-size: 30px;
+    line-height: 33px;
+  }
+}
+
 @font-face {
   font-family: 'Nb architekt r webfont';
   src: url('../fonts/nb_architekt_r_bold-webfont.woff2') format('woff2'), url('../fonts/nb_architekt_r_bold-webfont.eot') format('embedded-opentype'), url('../fonts/nb_architekt_r_bold-webfont.woff') format('woff'), url('../fonts/nb_architekt_r_bold-webfont.ttf') format('truetype');
