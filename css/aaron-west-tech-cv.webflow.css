@@ -67,6 +67,9 @@
 .body-2 {
   padding-bottom: 1px;
   background-color: #000;
+  background-image: url('../images/Screen-Shot-2021-12-05-at-1.07.41-PM.png');
+  background-position: 0px 0px;
+  background-size: auto;
   font-family: 'Nb architekt r webfont', sans-serif;
 }
 
@@ -123,6 +126,14 @@
 }
 
 .column-3 {
+  color: #5eeb8f;
+}
+
+.link {
+  color: #5eeb8f;
+}
+
+.text-span-3 {
   color: #5eeb8f;
 }
 
