@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron West | Portfolio</title>
+    <meta name="description" content="Aaron West's professional portfolio showcasing companies and projects">
+    <!-- Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'usmc-navy': '#003153',
+                        'usmc-scarlet': '#C70039',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-black text-zinc-100 font-sans antialiased">
+    <div class="floating-gradients"></div>
+
+    <!-- Navigation -->
+    <nav class="py-4 px-6 md:px-10 lg:px-16 border-b border-zinc-800">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold">Aaron West</div>
+            <div class="flex items-center gap-6">
+                <a href="#companies" class="text-zinc-400 hover:text-white transition-colors">Companies</a>
+                <a href="#contact" class="text-zinc-400 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="container mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-24">
+        <div class="max-w-4xl">
+            <div class="mb-4">
+                <span class="inline-flex items-center text-sm text-zinc-400">
+                    <span class="w-2 h-2 rounded-full bg-usmc-scarlet mr-2"></span>
+                    Entrepreneur & Technology Leader
+                </span>
+            </div>
+            <div class="flex items-center mb-6">
+                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-usmc-navy/20">
+                    <img src="images/aronwest.jpeg" alt="Aaron West" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col ml-4">
+                    <p class="text-sm font-medium text-white">Aaron West</p>
+                    <p class="text-xs text-zinc-400">Founder & Chairman</p>
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold tracking-tight mb-4">
+                Connecting Ideas & Building Solutions
+                <br />
+                <span class="text-zinc-400">Ventures that drive innovation.</span>
+            </h1>
+            <p class="text-lg text-zinc-400 mb-8 max-w-2xl">
+                Building technology-driven companies that solve complex problems. With a focus on innovative solutions and strategic leadership, I help businesses achieve meaningful growth.
+            </p>
+        </div>
+    </header>
+
+    <!-- Companies Section -->
+    <section id="companies" class="container mx-auto px-6 md:px-10 lg:px-16 py-16">
+        <h2 class="text-2xl font-bold mb-10">Companies</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Zygur Card -->
+            <div class="bg-zinc-800/50 rounded-lg p-8 hover:bg-zinc-800/70 transition-colors group">
+                <div class="flex items-center mb-6">
+                    <img src="images/zygur.png" alt="Zygur Logo" class="h-16 w-auto">
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Zygur</h3>
+                <p class="text-zinc-400 mb-6">
+                    AI-enhanced fractional CMO services for $1M-$15M businesses. Delivering enterprise-level marketing strategies at a fraction of the cost.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="text-xs bg-zinc-700/50 px-2 py-1 rounded">Marketing</span>
+                        <span class="text-xs bg-zinc-700/50 px-2 py-1 rounded">AI</span>
+                    </div>
+                    <a href="https://zygur.com" target="_blank" class="inline-flex items-center text-neon-green hover:text-white transition-colors group-hover:translate-x-1 transition-transform">
+                        Visit Site
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- EHS, Inc Card -->
+            <div class="bg-zinc-800/50 rounded-lg p-8 hover:bg-zinc-800/70 transition-colors group">
+                <div class="flex items-center mb-6">
+                    <img src="images/ehs.png" alt="EHS Logo" class="h-16 w-auto">
+                </div>
+                <h3 class="text-xl font-semibold mb-2">EHS, Inc</h3>
+                <p class="text-zinc-400 mb-6">
+                    Enterprise Health & Safety software solutions. Providing comprehensive safety management systems to streamline compliance and reduce workplace incidents.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="text-xs bg-zinc-700/50 px-2 py-1 rounded">Safety</span>
+                        <span class="text-xs bg-zinc-700/50 px-2 py-1 rounded">Software</span>
+                    </div>
+                    <a href="https://ehs.inc" target="_blank" class="inline-flex items-center text-rose-500 hover:text-white transition-colors group-hover:translate-x-1 transition-transform">
+                        Visit Site
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Background Section -->
+    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-16">
+        <div class="bg-gradient-to-r from-usmc-navy/20 to-usmc-scarlet/20 rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-6">Background</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Professional Experience</h3>
+                    <p class="text-zinc-400 mb-4">
+                        15+ years of leadership experience in marketing, technology, and risk management. 
+                        Founded and led multiple successful companies in diverse industries.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-usmc-scarlet mt-1 mr-2 flex-shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-sm text-zinc-300">Strategic marketing leadership</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-usmc-scarlet mt-1 mr-2 flex-shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-sm text-zinc-300">AI and technology integration</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-usmc-scarlet mt-1 mr-2 flex-shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-sm text-zinc-300">Business growth strategy</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Military Background</h3>
+                    <p class="text-zinc-400 mb-4">
+                        Decorated veteran with service in the United States Marine Corps and Florida National Guard. 
+                        Multiple deployments including Iraq, Haiti, Panama, Israel, and S. Korea.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-usmc-scarlet mt-1 mr-2 flex-shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-sm text-zinc-300">Infantry Team Leader, Iraq</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-neon-green mt-1 mr-2 flex-shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-sm text-zinc-300">Squad Leader, 2nd Marine Division</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-neon-green mt-1 mr-2 flex-shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-sm text-zinc-300">Multiple global deployments</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto px-6 md:px-10 lg:px-16 py-16 mb-10">
+        <h2 class="text-2xl font-bold mb-10">Contact</h2>
+        <div class="bg-zinc-800/50 rounded-lg p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Get in Touch</h3>
+                    <p class="text-zinc-400 mb-6">
+                        Interested in learning more about my companies or discussing potential opportunities? Reach out using the links below.
+                    </p>
+                    <div class="space-y-4">
+                        <a href="https://aaronwe.st" target="_blank" class="flex items-center group">
+                            <div class="w-10 h-10 rounded-full bg-zinc-700/30 flex items-center justify-center mr-3 group-hover:bg-zinc-700/50 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-zinc-400">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                                </svg>
+                            </div>
+                            <span class="text-zinc-300 group-hover:text-white transition-colors">aaronwe.st</span>
+                        </a>
+                        <a href="https://x.com/aarongwestx" target="_blank" class="flex items-center group">
+                            <div class="w-10 h-10 rounded-full bg-zinc-700/30 flex items-center justify-center mr-3 group-hover:bg-zinc-700/50 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-zinc-400" viewBox="0 0 16 16">
+                                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                                </svg>
+                            </div>
+                            <span class="text-zinc-300 group-hover:text-white transition-colors">@aarongwestx</span>
+                        </a>
+                        <a href="https://github.com/aarongwest" target="_blank" class="flex items-center group">
+                            <div class="w-10 h-10 rounded-full bg-zinc-700/30 flex items-center justify-center mr-3 group-hover:bg-zinc-700/50 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-zinc-400" viewBox="0 0 16 16">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                                </svg>
+                            </div>
+                            <span class="text-zinc-300 group-hover:text-white transition-colors">github.com/aarongwest</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Company Links</h3>
+                    <p class="text-zinc-400 mb-6">
+                        Visit my companies to learn more about the services and solutions we provide.
+                    </p>
+                    <div class="space-y-4">
+                        <a href="https://zygur.com" target="_blank" class="flex items-center group">
+                            <div class="w-10 h-10 rounded-full bg-neon-green/10 flex items-center justify-center mr-3 group-hover:bg-neon-green/20 transition-colors">
+                                <div class="w-4 h-4 rounded-full bg-neon-green"></div>
+                            </div>
+                            <span class="text-zinc-300 group-hover:text-white transition-colors">Zygur - Fractional CMO Services</span>
+                        </a>
+                        <a href="https://ehs.inc" target="_blank" class="flex items-center group">
+                            <div class="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center mr-3 group-hover:bg-rose-500/20 transition-colors">
+                                <div class="w-4 h-4 rounded-full bg-rose-500"></div>
+                            </div>
+                            <span class="text-zinc-300 group-hover:text-white transition-colors">EHS, Inc - Safety Software</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-800 py-8 px-6 md:px-10 lg:px-16">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-zinc-400 mb-4 md:mb-0">
+                &copy; 2025 Aaron West. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-zinc-400 hover:text-white transition-colors">Home</a>
+                <a href="#companies" class="text-zinc-400 hover:text-white transition-colors">Companies</a>
+                <a href="#contact" class="text-zinc-400 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
