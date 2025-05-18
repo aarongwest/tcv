@@ -133,7 +133,7 @@ body::after {
 
 /* USMC Colors */
 :root {
-  --usmc-navy: #02111F; /* Much darker USMC Dress Blues Navy */
+  --usmc-navy: #010A12; /* Almost black navy */
   --usmc-scarlet: #C70039;
 }
 
