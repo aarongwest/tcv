@@ -22,7 +22,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* Left: Name, Role and Photo */}
           <div className="space-y-4">
-            <div className="mb-4 flex justify-center md:justify-start">
+            <div className="mb-4 flex justify-start">
               <Image
                 src="/images/aaron-west.jpeg"
                 alt="Aaron West"
