@@ -33,7 +33,7 @@ export default function Home() {
             </div>
             <div className="space-y-2">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-tight">Aaron West</h1>
-              <div className="text-xs text-muted-foreground">aka "safety quant"</div>
+              <div className="text-xs text-muted-foreground">AKA "Plan B"</div>
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
