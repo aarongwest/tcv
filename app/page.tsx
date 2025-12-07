@@ -134,7 +134,7 @@ export default function Home() {
             <div className="text-xs text-muted-foreground font-mono">WORKS</div>
             <div className="space-y-2">
               <Link
-                href="https://www.youtube.com/@safetyobservations"
+                href="https://sog.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
