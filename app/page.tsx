@@ -108,7 +108,7 @@ export default function Home() {
                 </svg>
               </Link>
               <Link
-                href="https://www.youtube.com/@safetyobservations"
+                href="https://www.youtube.com/@safetycultures"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 text-foreground hover:text-muted-foreground transition-colors duration-300 text-sm"
