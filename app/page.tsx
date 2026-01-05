@@ -142,7 +142,7 @@ export default function Home() {
                   <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
                     <div className="text-sm font-medium text-foreground">Super Culture</div>
-                    <div className="text-xs text-muted-foreground/70">superculture.com</div>
+                    <div className="text-xs text-muted-foreground/70">superculture.ai</div>
                   </div>
                   <svg
                     className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
