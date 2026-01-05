@@ -139,6 +139,33 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
               >
+                  <div className="flex items-start justify-between">
+                  <div className="space-y-1 flex-1">
+                    <div className="text-sm font-medium text-foreground">Super Culture</div>
+                    <div className="text-xs text-muted-foreground/70">superculture.com</div>
+                  </div>
+                  <svg
+                    className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6v12h12v-6m0-4l4.586-4.586a2 2 0 012.828 0l-2.828 2.828H18v6h-6v-6z"
+                    />
+                  </svg>
+                </div>
+                <div className="text-xs text-muted-foreground mt-1">Super Culture</div>
+              </Link>
+              <Link
+                href="https://superculture.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
+              >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
                     <div className="text-sm font-medium text-foreground">SOG</div>
