@@ -134,7 +134,7 @@ export default function Home() {
             <div className="text-xs text-muted-foreground font-mono">WORKS</div>
             <div className="space-y-2">
               <Link
-                href="https://sog.dev"
+                href="https://superculture.ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
@@ -161,7 +161,7 @@ export default function Home() {
                 <div className="text-xs text-muted-foreground mt-1">Super Culture</div>
               </Link>
               <Link
-                href="https://superculture.ai"
+                href="https://sog.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
