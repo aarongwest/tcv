@@ -60,7 +60,7 @@ export default function Home() {
               <div className="text-xs text-muted-foreground font-mono">FOCUS AREAS</div>
               <div className="flex flex-wrap gap-2">
                 {["Risk", "Compliance", "Safety Culture", "UnSafety", "Safety-II", "Safety Differently", "Observations", "Mitigation", "Big Data", "Performance", "KPIs"].map((skill) => (
-                  <span>
+                  <span
                     key={skill}
                     className="px-2 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
                   >
