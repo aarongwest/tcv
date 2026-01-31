@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Aaron West - EHS / Safety Professional",
   description: "EHS and Safety Professional from Utah with expertise in workplace safety and compliance.",
   generator: "v0.app",
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
