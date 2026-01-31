@@ -33,7 +33,7 @@ export default function Home() {
             </div>
             <div className="space-y-2">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-tight">Aaron West</h1>
-              <div className="text-xs text-muted-foreground">AKA "Plan B"</div>
+              <div className="text-xs text-muted-foreground">AKA "Plan b"</div>
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -51,7 +51,7 @@ export default function Home() {
               <div className="space-y-1">
                 <div className="text-foreground font-medium text-sm">EHS / Safety Professional</div>
                 <div className="text-xs text-muted-foreground">
-                  20 years experience | Environmental, Health & Safety
+                  20 years experience | Risk, Compliance, Environmental, Health, Safety
                 </div>
               </div>
             </div>
@@ -275,8 +275,8 @@ export default function Home() {
           <div className="space-y-3">
             <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Environmental Health & Safety professional with expertise in workplace safety compliance, risk management,
-              and operational excellence. Lover of big data and high performance.
+              Environmental Health & Safety professional with additional expertise in workplace safety compliance, risk management,
+              and operational excellence. Lover of big data and high performance. Habitual maker of AI powered software tools for all of the above. 
             </p>
           </div>
         </div>
