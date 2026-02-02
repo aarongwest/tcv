@@ -10,8 +10,8 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Aaron West - EHS / Safety Professional",
-  description: "EHS and Safety Professional from Utah with expertise in workplace safety and compliance.",
+  title: "Aaron West - Utah Risk, Safety and Compliance Pro",
+  description: "Utah Risk and Safety Pro with EHS Specilization.",
   generator: "v0.app",
 }
 
