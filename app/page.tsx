@@ -51,7 +51,7 @@ export default function Home() {
               <div className="space-y-1">
                 <div className="text-foreground font-medium text-sm">Risk & Compliance Pro w/ EHS Specialization</div>
                 <div className="text-xs text-muted-foreground">
-                  20 years experience | Risk, Compliance, GRC, EHS, ESG, HIPPA, SOC2, ISO, FDA, EPA
+                  20 years experience | Risk, Compliance, GRC, EHS, ESG, HIPPA, SOC2, ISO, FDA, EPA, OSHA, CalOSHA, WISHA, MIOSH, Tier II, ISNetworld, Avetta, etc.
                 </div>
               </div>
             </div>
