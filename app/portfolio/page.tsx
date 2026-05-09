@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
+// When dark/light logo variants are uploaded, update logoDark / logoLight paths.
+// Current placeholders point to the same file until variants are provided.
 const companies = [
   {
     id: "ehs",
@@ -13,9 +15,8 @@ const companies = [
     url: "https://ehs.inc",
     domain: "ehs.inc",
     status: "active" as const,
-    logo: "/images/ehs-logo.png",
-    getFilter: (isDark: boolean) => (isDark ? "invert(1)" : "none"),
-    // SVG coordinate for line endpoint and HTML centering
+    logoDark: "/images/ehs-logo.png",
+    logoLight: "/images/ehs-logo.png",
     svgX: 117,
     lineDelay: 0,
     nodeStaggerDelay: 0,
@@ -29,8 +30,8 @@ const companies = [
     url: "https://west.industries",
     domain: "west.industries",
     status: "active" as const,
-    logo: "/images/west-logo.png",
-    getFilter: (isDark: boolean) => isDark ? "brightness(0) invert(1)" : "none",
+    logoDark: "/images/west-logo.png",
+    logoLight: "/images/west-logo.png",
     svgX: 350,
     lineDelay: 150,
     nodeStaggerDelay: 150,
@@ -44,23 +45,18 @@ const companies = [
     url: "https://zygur.com",
     domain: "zygur.com",
     status: "inactive" as const,
-    logo: "/images/zygur-logo.png",
-    // brightness(0) collapses all channels to black, invert(1) flips to solid white
-    getFilter: (isDark: boolean) => isDark
-      ? "drop-shadow(0 0 2px white) drop-shadow(0 0 4px rgba(255,255,255,0.6))"
-      : "invert(1) drop-shadow(0 0 2px black)",
+    logoDark: "/images/zygur-logo.png",
+    logoLight: "/images/zygur-logo.png",
     svgX: 583,
     lineDelay: 300,
     nodeStaggerDelay: 300,
   },
 ]
 
-// Virtual coordinate space matching the SVG viewBox (700 × 480).
-// HTML nodes are absolutely positioned using these as percentages of the container.
-//
-// Aaron node:    center-x=350, top=20, w=210, h=120  → bottom y=140
+// Virtual coordinate space — SVG viewBox and HTML percentage positions share these numbers.
+// Aaron node:    center-x=350, top=20, w=210, h=120 → bottom y=140
 // Company nodes: center-x=svgX, top=330, w=170, h=130
-// Lines:         (350, 140) → (svgX, 330)
+// Lines:         (350,140) → (svgX, 330)
 const VW = 700
 const VH = 480
 const AARON_TOP = 20
@@ -127,16 +123,11 @@ export default function Portfolio() {
 
         {/* Diagram — horizontal scroll on narrow viewports */}
         <div className="overflow-x-auto">
-          {/*
-            Container maintains a 700:480 aspect ratio so SVG coordinates
-            map 1:1 to percentage positions of HTML nodes.
-            min-width keeps nodes legible on small screens.
-          */}
           <div
             className="relative"
             style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "560px" }}
           >
-            {/* SVG layer — animated lines only, no foreignObject */}
+            {/* SVG layer — animated lines only */}
             <svg
               viewBox={`0 0 ${VW} ${VH}`}
               className="absolute inset-0 w-full h-full pointer-events-none"
@@ -163,7 +154,7 @@ export default function Portfolio() {
               })}
             </svg>
 
-            {/* Aaron node — centered at (50%, 4.17%), size 30% × 25% */}
+            {/* Aaron node */}
             <div
               className="absolute"
               style={{
@@ -179,14 +170,7 @@ export default function Portfolio() {
                 <img
                   src="/images/aaron-west-logo.png"
                   alt="Aaron West"
-                  style={{
-                    height: "36px",
-                    width: "auto",
-                    maxWidth: "80%",
-                    objectFit: "contain",
-                    filter: isDark ? "invert(1)" : "none",
-                    transition: "filter 0.3s",
-                  }}
+                  style={{ height: "36px", width: "auto", maxWidth: "80%", objectFit: "contain", filter: isDark ? "invert(1)" : "none" }}
                 />
                 <div className="text-center">
                   <div className="text-xs font-medium text-foreground">Aaron West</div>
@@ -195,7 +179,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Company nodes — centered at (svgX/VW, CO_TOP/VH), size 24.3% × 27.1% */}
+            {/* Company nodes */}
             {companies.map((company) => (
               <div
                 key={company.id}
@@ -217,7 +201,7 @@ export default function Portfolio() {
                   onMouseEnter={() => setActiveCompany(company.id)}
                   onMouseLeave={() => setActiveCompany(null)}
                   className={[
-                    "flex flex-col justify-between w-full h-full border rounded-lg p-3 bg-background transition-colors duration-300 no-underline",
+                    "flex flex-col gap-2 w-full h-full border rounded-lg p-3 bg-background transition-colors duration-300 no-underline",
                     company.status === "inactive" ? "opacity-50" : "",
                     activeCompany === company.id
                       ? "border-muted-foreground/50"
@@ -228,17 +212,9 @@ export default function Portfolio() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={company.logo}
+                    src={isDark ? company.logoDark : company.logoLight}
                     alt={company.name}
-                    style={{
-                      height: "28px",
-                      width: "auto",
-                      maxWidth: "100%",
-                      objectFit: "contain",
-                      objectPosition: "left center",
-                      filter: company.getFilter(isDark),
-                      transition: "filter 0.3s",
-                    }}
+                    style={{ height: "28px", width: "auto", maxWidth: "100%", objectFit: "contain", objectPosition: "left center", filter: isDark ? "invert(1)" : "none" }}
                   />
                   <div>
                     <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
@@ -280,23 +256,11 @@ export default function Portfolio() {
             aria-label="Toggle theme"
           >
             {isDark ? (
-              <svg
-                className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm10.657 0l-.707.707a1 1 0 00-1.414-1.414l.707-.707a1 1 0 011.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                  clipRule="evenodd"
-                />
+              <svg className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm10.657 0l-.707.707a1 1 0 00-1.414-1.414l.707-.707a1 1 0 011.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
               </svg>
             ) : (
-              <svg
-                className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
+              <svg className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
               </svg>
             )}
