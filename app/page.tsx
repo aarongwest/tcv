@@ -58,7 +58,7 @@ export default function Home() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 Available for Consulting
               </div>
-              <div>Utah - In Person, Worldwide - Virtual</div>
+              <div>Texas - In Person, Worldwide - Virtual</div>
             </div>
           </div>
 
