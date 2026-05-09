@@ -17,6 +17,7 @@ const companies = [
     invertOnDark: true,
     coCX: 200,
     ai: "Gerty AI",
+    aiDescription: "Automates EHS compliance programs — training schedules, inspection tracking, incident reporting, and regulatory reminders. Runs autonomously so clients stay compliant without manual effort.",
     people: ["Mary - Controller", "Khristyn - Operations", "Isaac - Sales", "Bambi - Marketing"],
   },
   {
@@ -32,6 +33,7 @@ const companies = [
     invertOnDark: false,
     coCX: 650,
     ai: "Kasey AI",
+    aiDescription: "Manages field operations for West Industries Corp. — job scheduling, crew dispatch, client follow-up, and service coordination across land clearing, construction, and welding.",
     people: ["Mary - Controller", "Zed - Owner", "Scott - Sales", "Kathy - Dispatch", "Greg - Support"],
   },
   {
@@ -47,6 +49,7 @@ const companies = [
     invertOnDark: false,
     coCX: 1050,
     ai: "Hayli AI",
+    aiDescription: "Drives research and development at Zygur — tracking breakthroughs in AI automation and advanced manufacturing, synthesizing findings, and surfacing opportunities for new products.",
     people: ["Mary - Controller", "Hayli - Sales", "Zed - Owner", "Greg - Operations"],
   },
 ]
@@ -113,6 +116,7 @@ function pct(v: number, total: number) {
 export default function Portfolio() {
   const [isDark, setIsDark] = useState(true)
   const [activeCompany, setActiveCompany] = useState<string | null>(null)
+  const [activeAI, setActiveAI] = useState<string | null>(null)
   const [phase, setPhase] = useState(0)
 
   useEffect(() => {
@@ -128,6 +132,8 @@ export default function Portfolio() {
   }, [])
 
   const activeData = companies.find((c) => c.id === activeCompany) ?? null
+  const activeAIData = companies.find((c) => c.id === activeAI) ?? null
+  const activeAIIndex = activeAIData ? companies.indexOf(activeAIData) : -1
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
@@ -298,7 +304,7 @@ export default function Portfolio() {
             >
               <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-3">
                 <div className="text-xs font-medium text-foreground">Collis AI</div>
-                <div className="text-xs text-muted-foreground text-center leading-tight">AI Assistant</div>
+                <div className="text-xs text-muted-foreground text-center leading-tight">Co-Owner</div>
               </div>
             </div>
 
@@ -334,11 +340,10 @@ export default function Portfolio() {
                     src={isDark ? company.logoDark : company.logoLight}
                     alt={company.name}
                     style={{
-                      height: "28px",
-                      width: "auto",
-                      maxWidth: "100%",
+                      height: "48px",
+                      width: "100%",
                       objectFit: "contain",
-                      objectPosition: "left center",
+                      objectPosition: "center",
                       filter: (company.invertOnDark ? isDark : !isDark) ? "invert(1)" : "none",
                     }}
                   />
@@ -364,7 +369,11 @@ export default function Portfolio() {
                   transition: "opacity 0.5s ease-in-out 100ms",
                 }}
               >
-                <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-2">
+                <div
+                  className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-2 cursor-default transition-colors duration-300 hover:border-muted-foreground/50"
+                  onMouseEnter={() => setActiveAI(company.id)}
+                  onMouseLeave={() => setActiveAI(null)}
+                >
                   <div className="text-xs font-medium text-foreground text-center leading-tight">{company.ai}</div>
                   <div className="text-[10px] text-muted-foreground font-mono">CEO</div>
                 </div>
@@ -393,7 +402,7 @@ export default function Portfolio() {
               ))
             )}
 
-            {/* Tooltip */}
+            {/* Company tooltip */}
             {activeData && (
               <div
                 className="absolute z-10 pointer-events-none"
@@ -407,6 +416,24 @@ export default function Portfolio() {
                   <div className="text-xs font-medium text-foreground mb-1">{activeData.name}</div>
                   <div className="text-xs text-muted-foreground font-mono mb-2">{activeData.tagline}</div>
                   <div className="text-xs text-muted-foreground/80 leading-relaxed">{activeData.description}</div>
+                </div>
+              </div>
+            )}
+
+            {/* AI tooltip */}
+            {activeAIData && activeAIIndex >= 0 && (
+              <div
+                className="absolute z-10 pointer-events-none"
+                style={{
+                  left: pct(AI_POSITIONS[activeAIIndex].cX, VW),
+                  top: pct(AI_TOP, VH),
+                  transform: "translate(-50%, calc(-100% - 12px))",
+                }}
+              >
+                <div className="bg-background border border-border rounded-lg p-3 shadow-sm w-56">
+                  <div className="text-xs font-medium text-foreground mb-1">{activeAIData.ai}</div>
+                  <div className="text-[10px] text-muted-foreground font-mono mb-2">CEO — Reports to Collis AI</div>
+                  <div className="text-xs text-muted-foreground/80 leading-relaxed">{activeAIData.aiDescription}</div>
                 </div>
               </div>
             )}
