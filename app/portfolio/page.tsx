@@ -3,9 +3,6 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
-// Logo filter strategy:
-// - Black logos (AW, EHS, West): invert(1) in dark mode so they become white
-// - White logo (Zygur): invert(1) in light mode so it becomes black
 const companies = [
   {
     id: "ehs",
@@ -17,7 +14,7 @@ const companies = [
     domain: "ehs.inc",
     status: "active" as const,
     logo: "/images/ehs-logo.png",
-    logoInvertInDark: true,
+    getFilter: (isDark: boolean) => isDark ? "invert(1)" : "none",
     svgX: 117,
     lineDelay: 0,
     nodeStaggerDelay: 0,
@@ -32,7 +29,7 @@ const companies = [
     domain: "west.industries",
     status: "active" as const,
     logo: "/images/west-logo.png",
-    logoInvertInDark: true,
+    getFilter: (_isDark: boolean) => "invert(1)",
     svgX: 350,
     lineDelay: 150,
     nodeStaggerDelay: 150,
@@ -47,7 +44,7 @@ const companies = [
     domain: "zygur.com",
     status: "inactive" as const,
     logo: "/images/zygur-logo.png",
-    logoInvertInDark: false,
+    getFilter: (isDark: boolean) => isDark ? "brightness(2)" : "invert(1) brightness(1.5)",
     svgX: 583,
     lineDelay: 300,
     nodeStaggerDelay: 300,
@@ -88,11 +85,6 @@ export default function Portfolio() {
   }, [])
 
   const activeData = companies.find((c) => c.id === activeCompany) ?? null
-
-  const logoFilter = (invertInDark: boolean) =>
-    invertInDark
-      ? isDark ? "invert(1)" : "none"
-      : isDark ? "none" : "invert(1)"
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
@@ -157,7 +149,7 @@ export default function Portfolio() {
                     width: "auto",
                     maxWidth: "100%",
                     objectFit: "contain",
-                    filter: logoFilter(true),
+                    filter: isDark ? "invert(1)" : "none",
                     transition: "filter 0.3s",
                   }}
                 />
@@ -208,7 +200,7 @@ export default function Portfolio() {
                         maxWidth: "100%",
                         objectFit: "contain",
                         objectPosition: "left center",
-                        filter: logoFilter(company.logoInvertInDark),
+                        filter: company.getFilter(isDark),
                         transition: "filter 0.3s",
                       }}
                     />
