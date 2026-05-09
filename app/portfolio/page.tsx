@@ -113,6 +113,13 @@ function pct(v: number, total: number) {
   return `${(v / total) * 100}%`
 }
 
+function tooltipTransform(xVirtual: number): string {
+  const xPct = xVirtual / VW
+  if (xPct < 0.25) return "translate(0%, calc(-100% - 12px))"
+  if (xPct > 0.75) return "translate(-100%, calc(-100% - 12px))"
+  return "translate(-50%, calc(-100% - 12px))"
+}
+
 export default function Portfolio() {
   const [isDark, setIsDark] = useState(true)
   const [activeCompany, setActiveCompany] = useState<string | null>(null)
@@ -340,7 +347,7 @@ export default function Portfolio() {
                     src={isDark ? company.logoDark : company.logoLight}
                     alt={company.name}
                     style={{
-                      height: "48px",
+                      height: "38px",
                       width: "100%",
                       objectFit: "contain",
                       objectPosition: "center",
@@ -409,7 +416,7 @@ export default function Portfolio() {
                 style={{
                   left: pct(activeData.coCX, VW),
                   top: pct(CO_TOP_NODE, VH),
-                  transform: "translate(-50%, calc(-100% - 12px))",
+                  transform: tooltipTransform(activeData.coCX),
                 }}
               >
                 <div className="border border-border rounded-lg p-3 shadow-xl w-52"
@@ -428,7 +435,7 @@ export default function Portfolio() {
                 style={{
                   left: pct(AI_POSITIONS[activeAIIndex].cX, VW),
                   top: pct(AI_TOP, VH),
-                  transform: "translate(-50%, calc(-100% - 12px))",
+                  transform: tooltipTransform(AI_POSITIONS[activeAIIndex].cX),
                 }}
               >
                 <div className="border border-border rounded-lg p-3 shadow-xl w-56"
