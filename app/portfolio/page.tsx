@@ -3,8 +3,6 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
-// When dark/light logo variants are uploaded, update logoDark / logoLight paths.
-// Current placeholders point to the same file until variants are provided.
 const companies = [
   {
     id: "ehs",
@@ -14,13 +12,11 @@ const companies = [
       "Portal-first platform for managing safety programs with Gerty AI. Training, inspections, reminders, and reports — fully automated. Set it once, runs on autopilot.",
     url: "https://ehs.inc",
     domain: "ehs.inc",
-    status: "active" as const,
     logoDark: "/images/ehs-logo.png",
     logoLight: "/images/ehs-logo.png",
     invertOnDark: true,
-    svgX: 117,
-    lineDelay: 0,
-    nodeStaggerDelay: 0,
+    coCX: 167,
+    people: ["Mary", "Khristyn", "Isaac", "Bambi"],
   },
   {
     id: "west",
@@ -30,93 +26,97 @@ const companies = [
       "Land clearing, site construction, and welding repair across Greater Houston. Three service brands: West Land Clearing, West Construction, and West Weld.",
     url: "https://west.industries",
     domain: "west.industries",
-    status: "active" as const,
     logoDark: "/images/west-logo.png",
     logoLight: "/images/west-logo.png",
     invertOnDark: false,
-    svgX: 350,
-    lineDelay: 150,
-    nodeStaggerDelay: 150,
+    coCX: 500,
+    people: ["Mary", "Zed", "Scott", "Kathy", "Greg"],
   },
   {
     id: "zygur",
     name: "Zygur Technologies Corp.",
     tagline: "Technology Research",
     description:
-      "Technology research company exploring emerging tools, frameworks, and ideas. Incubator for concepts that may inform future products.",
+      "Technology research company focused on AI automation and advanced manufacturing.",
     url: "https://zygur.com",
     domain: "zygur.com",
-    status: "active" as const,
     logoDark: "/images/zygur-logo.png",
     logoLight: "/images/zygur-logo.png",
     invertOnDark: false,
-    svgX: 583,
-    lineDelay: 300,
-    nodeStaggerDelay: 300,
+    coCX: 833,
+    people: ["Hayli", "Zed", "Greg"],
   },
 ]
 
-// Virtual coordinate space — SVG viewBox and HTML percentage positions share these numbers.
-// Aaron node:    center-x=350, top=20, w=210, h=120 → bottom y=140
-// Company nodes: center-x=svgX, top=330, w=170, h=130
-// Lines:         (350,140) → (svgX, 330)
-const VW = 700
-const VH = 480
+// Virtual coordinate space
+// Aaron center-x = 500 aligns with West (500) → main vertical is a clean straight drop.
+const VW = 1000
+const VH = 640
+
+const AARON_CX = 500
 const AARON_TOP = 20
-const AARON_W = 210
-const AARON_H = 120
-const CO_TOP = 330
+const AARON_W = 220
+const AARON_H = 95
+const AARON_BOTTOM = AARON_TOP + AARON_H    // 115
+const AARON_RIGHT = AARON_CX + AARON_W / 2  // 610
+
+const COLLIS_TOP = 20
+const COLLIS_W = 140
+const COLLIS_H = 95
+const COLLIS_LEFT = 655
+const CONNECTOR_Y = AARON_TOP + AARON_H / 2  // 67.5
+
+const BUS_Y = 215
+const CO_TOP_NODE = BUS_Y + 20               // 235
 const CO_W = 170
 const CO_H = 130
-const LINE_Y1 = AARON_TOP + AARON_H   // 140
-const LINE_Y2 = CO_TOP                 // 330
+const CO_BOTTOM = CO_TOP_NODE + CO_H         // 365
+
+const PERSON_SECTION_TOP = CO_BOTTOM + 20    // 385
+const PERSON_W = 140
+const PERSON_H = 32
+const PERSON_ROW_STEP = PERSON_H + 10        // 42
+
+const AARON_VERTICAL_LEN = CO_TOP_NODE - AARON_BOTTOM             // 120
+const BUS_LEFT_LEN = AARON_CX - companies[0].coCX                 // 333
+const BUS_RIGHT_LEN = companies[2].coCX - AARON_CX                // 333
+const SIDE_DROP_LEN = CO_TOP_NODE - BUS_Y                         // 20
+const COLLIS_LEN = COLLIS_LEFT - AARON_RIGHT                      // 45
+const PEOPLE_CONNECTOR_LEN = PERSON_SECTION_TOP - CO_BOTTOM       // 20
 
 function pct(v: number, total: number) {
   return `${(v / total) * 100}%`
 }
 
-function lineLen(svgX: number) {
-  const dx = 350 - svgX
-  const dy = LINE_Y2 - LINE_Y1
-  return Math.sqrt(dx * dx + dy * dy)
-}
-
 export default function Portfolio() {
   const [isDark, setIsDark] = useState(true)
   const [activeCompany, setActiveCompany] = useState<string | null>(null)
-  const [linesDrawn, setLinesDrawn] = useState(false)
-  const [nodesVisible, setNodesVisible] = useState(false)
+  const [phase, setPhase] = useState(0)
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
   }, [isDark])
 
   useEffect(() => {
-    const t1 = setTimeout(() => setLinesDrawn(true), 400)
-    const t2 = setTimeout(() => setNodesVisible(true), 1200)
-    return () => {
-      clearTimeout(t1)
-      clearTimeout(t2)
-    }
+    const t1 = setTimeout(() => setPhase(1), 300)   // Aaron vertical + Collis connector
+    const t2 = setTimeout(() => setPhase(2), 700)   // Bus lines
+    const t3 = setTimeout(() => setPhase(3), 1100)  // Company drops + company nodes
+    const t4 = setTimeout(() => setPhase(4), 1500)  // People connector + people cards
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4) }
   }, [])
 
   const activeData = companies.find((c) => c.id === activeCompany) ?? null
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
-      <main className="w-full max-w-4xl">
+      <main className="w-full max-w-5xl">
         {/* Header nav */}
         <div className="flex items-center justify-between mb-12">
           <Link
             href="/"
             className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
           >
-            <svg
-              className="w-3 h-3 transform group-hover:-translate-x-0.5 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-3 h-3 transform group-hover:-translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
             </svg>
             <span>Aaron West</span>
@@ -124,46 +124,90 @@ export default function Portfolio() {
           <div className="text-xs text-muted-foreground font-mono">PORTFOLIO</div>
         </div>
 
-        {/* Diagram — horizontal scroll on narrow viewports */}
+        {/* Diagram */}
         <div className="overflow-x-auto">
-          <div
-            className="relative"
-            style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "560px" }}
-          >
-            {/* SVG layer — animated lines only */}
+          <div className="relative" style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "680px" }}>
+
+            {/* SVG — orthogonal lines only */}
             <svg
               viewBox={`0 0 ${VW} ${VH}`}
               className="absolute inset-0 w-full h-full pointer-events-none"
               preserveAspectRatio="xMidYMid meet"
             >
-              {companies.map((company) => {
-                const len = lineLen(company.svgX)
-                return (
-                  <line
-                    key={company.id}
-                    x1="350"
-                    y1={LINE_Y1}
-                    x2={company.svgX}
-                    y2={LINE_Y2}
-                    stroke="hsl(var(--border))"
-                    strokeWidth="1"
-                    style={{
-                      strokeDasharray: len,
-                      strokeDashoffset: linesDrawn ? 0 : len,
-                      transition: `stroke-dashoffset 0.7s ease-in-out ${company.lineDelay}ms`,
-                    }}
-                  />
-                )
-              })}
+              {/* Aaron straight down → West / bus junction */}
+              <line
+                x1={AARON_CX} y1={AARON_BOTTOM} x2={AARON_CX} y2={CO_TOP_NODE}
+                stroke="hsl(var(--border))" strokeWidth="1"
+                style={{
+                  strokeDasharray: AARON_VERTICAL_LEN,
+                  strokeDashoffset: phase >= 1 ? 0 : AARON_VERTICAL_LEN,
+                  transition: "stroke-dashoffset 0.5s ease-in-out",
+                }}
+              />
+              {/* Bus left */}
+              <line
+                x1={AARON_CX} y1={BUS_Y} x2={companies[0].coCX} y2={BUS_Y}
+                stroke="hsl(var(--border))" strokeWidth="1"
+                style={{
+                  strokeDasharray: BUS_LEFT_LEN,
+                  strokeDashoffset: phase >= 2 ? 0 : BUS_LEFT_LEN,
+                  transition: "stroke-dashoffset 0.45s ease-in-out",
+                }}
+              />
+              {/* Bus right */}
+              <line
+                x1={AARON_CX} y1={BUS_Y} x2={companies[2].coCX} y2={BUS_Y}
+                stroke="hsl(var(--border))" strokeWidth="1"
+                style={{
+                  strokeDasharray: BUS_RIGHT_LEN,
+                  strokeDashoffset: phase >= 2 ? 0 : BUS_RIGHT_LEN,
+                  transition: "stroke-dashoffset 0.45s ease-in-out",
+                }}
+              />
+              {/* EHS and Zygur drops (West shares Aaron vertical) */}
+              {[companies[0], companies[2]].map((company) => (
+                <line
+                  key={`drop-${company.id}`}
+                  x1={company.coCX} y1={BUS_Y} x2={company.coCX} y2={CO_TOP_NODE}
+                  stroke="hsl(var(--border))" strokeWidth="1"
+                  style={{
+                    strokeDasharray: SIDE_DROP_LEN,
+                    strokeDashoffset: phase >= 3 ? 0 : SIDE_DROP_LEN,
+                    transition: "stroke-dashoffset 0.2s ease-in-out",
+                  }}
+                />
+              ))}
+              {/* Collis AI connector */}
+              <line
+                x1={AARON_RIGHT} y1={CONNECTOR_Y} x2={COLLIS_LEFT} y2={CONNECTOR_Y}
+                stroke="hsl(var(--border))" strokeWidth="1"
+                style={{
+                  strokeDasharray: COLLIS_LEN,
+                  strokeDashoffset: phase >= 1 ? 0 : COLLIS_LEN,
+                  transition: "stroke-dashoffset 0.25s ease-in-out 150ms",
+                }}
+              />
+              {/* Company → people connectors */}
+              {companies.map((company) => (
+                <line
+                  key={`people-drop-${company.id}`}
+                  x1={company.coCX} y1={CO_BOTTOM} x2={company.coCX} y2={PERSON_SECTION_TOP}
+                  stroke="hsl(var(--border))" strokeWidth="1"
+                  style={{
+                    strokeDasharray: PEOPLE_CONNECTOR_LEN,
+                    strokeDashoffset: phase >= 4 ? 0 : PEOPLE_CONNECTOR_LEN,
+                    transition: "stroke-dashoffset 0.2s ease-in-out",
+                  }}
+                />
+              ))}
             </svg>
 
             {/* Aaron node */}
             <div
               className="absolute"
               style={{
-                left: "50%",
+                left: pct(AARON_CX - AARON_W / 2, VW),
                 top: pct(AARON_TOP, VH),
-                transform: "translateX(-50%)",
                 width: pct(AARON_W, VW),
                 height: pct(AARON_H, VH),
               }}
@@ -173,12 +217,28 @@ export default function Portfolio() {
                 <img
                   src="/images/aaron-west-logo.png"
                   alt="Aaron West"
-                  style={{ height: "36px", width: "auto", maxWidth: "80%", objectFit: "contain", filter: isDark ? "invert(1)" : "none" }}
+                  style={{ height: "32px", width: "auto", maxWidth: "80%", objectFit: "contain", filter: isDark ? "invert(1)" : "none" }}
                 />
                 <div className="text-center">
                   <div className="text-xs font-medium text-foreground">Aaron West</div>
                   <div className="text-xs text-muted-foreground">Owner</div>
                 </div>
+              </div>
+            </div>
+
+            {/* Collis AI node */}
+            <div
+              className="absolute"
+              style={{
+                left: pct(COLLIS_LEFT, VW),
+                top: pct(COLLIS_TOP, VH),
+                width: pct(COLLIS_W, VW),
+                height: pct(COLLIS_H, VH),
+              }}
+            >
+              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-3">
+                <div className="text-xs font-medium text-foreground">Collis AI</div>
+                <div className="text-xs text-muted-foreground text-center leading-tight">AI Assistant</div>
               </div>
             </div>
 
@@ -188,13 +248,12 @@ export default function Portfolio() {
                 key={company.id}
                 className="absolute"
                 style={{
-                  left: pct(company.svgX, VW),
-                  top: pct(CO_TOP, VH),
-                  transform: "translateX(-50%)",
+                  left: pct(company.coCX - CO_W / 2, VW),
+                  top: pct(CO_TOP_NODE, VH),
                   width: pct(CO_W, VW),
                   height: pct(CO_H, VH),
-                  opacity: nodesVisible ? 1 : 0,
-                  transition: `opacity 0.5s ease-in-out ${company.nodeStaggerDelay}ms`,
+                  opacity: phase >= 3 ? 1 : 0,
+                  transition: "opacity 0.5s ease-in-out",
                 }}
               >
                 <a
@@ -205,38 +264,61 @@ export default function Portfolio() {
                   onMouseLeave={() => setActiveCompany(null)}
                   className={[
                     "flex flex-col gap-2 w-full h-full border rounded-lg p-3 bg-background transition-colors duration-300 no-underline",
-                    company.status === "inactive" ? "opacity-50" : "",
                     activeCompany === company.id
                       ? "border-muted-foreground/50"
                       : "border-border hover:border-muted-foreground/50",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
+                  ].join(" ")}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={isDark ? company.logoDark : company.logoLight}
                     alt={company.name}
-                    style={{ height: "28px", width: "auto", maxWidth: "100%", objectFit: "contain", objectPosition: "left center", filter: (company.invertOnDark ? isDark : !isDark) ? "invert(1)" : "none" }}
+                    style={{
+                      height: "28px",
+                      width: "auto",
+                      maxWidth: "100%",
+                      objectFit: "contain",
+                      objectPosition: "left center",
+                      filter: (company.invertOnDark ? isDark : !isDark) ? "invert(1)" : "none",
+                    }}
                   />
                   <div>
                     <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
                     <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
-                    {company.status === "inactive" && (
-                      <div className="text-[10px] text-muted-foreground/50 mt-1 font-mono">SHELVED</div>
-                    )}
                   </div>
                 </a>
               </div>
             ))}
+
+            {/* People cards under each company */}
+            {companies.map((company) =>
+              company.people.map((name, i) => (
+                <div
+                  key={`${company.id}-${name}`}
+                  className="absolute"
+                  style={{
+                    left: pct(company.coCX - PERSON_W / 2, VW),
+                    top: pct(PERSON_SECTION_TOP + i * PERSON_ROW_STEP, VH),
+                    width: pct(PERSON_W, VW),
+                    height: pct(PERSON_H, VH),
+                    opacity: phase >= 4 ? 1 : 0,
+                    transition: `opacity 0.4s ease-in-out ${i * 60}ms`,
+                  }}
+                >
+                  <div className="w-full h-full border border-border rounded-md bg-background flex items-center justify-center">
+                    <span className="text-xs text-muted-foreground">{name}</span>
+                  </div>
+                </div>
+              ))
+            )}
 
             {/* Tooltip */}
             {activeData && (
               <div
                 className="absolute z-10 pointer-events-none"
                 style={{
-                  left: pct(activeData.svgX, VW),
-                  top: pct(CO_TOP, VH),
+                  left: pct(activeData.coCX, VW),
+                  top: pct(CO_TOP_NODE, VH),
                   transform: "translate(-50%, calc(-100% - 12px))",
                 }}
               >
