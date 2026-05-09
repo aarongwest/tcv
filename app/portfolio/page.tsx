@@ -30,7 +30,7 @@ const companies = [
     domain: "west.industries",
     status: "active" as const,
     logo: "/images/west-logo.png",
-    getFilter: (_isDark: boolean) => "invert(1)",
+    getFilter: (isDark: boolean) => isDark ? "brightness(0) invert(1)" : "none",
     svgX: 350,
     lineDelay: 150,
     nodeStaggerDelay: 150,
@@ -46,7 +46,9 @@ const companies = [
     status: "inactive" as const,
     logo: "/images/zygur-logo.png",
     // brightness(0) collapses all channels to black, invert(1) flips to solid white
-    getFilter: (isDark: boolean) => (isDark ? "brightness(0) invert(1)" : "invert(1)"),
+    getFilter: (isDark: boolean) => isDark
+      ? "drop-shadow(0 0 2px white) drop-shadow(0 0 4px rgba(255,255,255,0.6))"
+      : "invert(1) drop-shadow(0 0 2px black)",
     svgX: 583,
     lineDelay: 300,
     nodeStaggerDelay: 300,
