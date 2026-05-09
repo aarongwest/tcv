@@ -17,6 +17,7 @@ const companies = [
     status: "active" as const,
     logoDark: "/images/ehs-logo.png",
     logoLight: "/images/ehs-logo.png",
+    invertOnDark: true,
     svgX: 117,
     lineDelay: 0,
     nodeStaggerDelay: 0,
@@ -32,6 +33,7 @@ const companies = [
     status: "active" as const,
     logoDark: "/images/west-logo.png",
     logoLight: "/images/west-logo.png",
+    invertOnDark: false,
     svgX: 350,
     lineDelay: 150,
     nodeStaggerDelay: 150,
@@ -47,6 +49,7 @@ const companies = [
     status: "inactive" as const,
     logoDark: "/images/zygur-logo.png",
     logoLight: "/images/zygur-logo.png",
+    invertOnDark: false,
     svgX: 583,
     lineDelay: 300,
     nodeStaggerDelay: 300,
@@ -214,7 +217,7 @@ export default function Portfolio() {
                   <img
                     src={isDark ? company.logoDark : company.logoLight}
                     alt={company.name}
-                    style={{ height: "28px", width: "auto", maxWidth: "100%", objectFit: "contain", objectPosition: "left center", filter: isDark ? "invert(1)" : "none" }}
+                    style={{ height: "28px", width: "auto", maxWidth: "100%", objectFit: "contain", objectPosition: "left center", filter: (company.invertOnDark ? isDark : !isDark) ? "invert(1)" : "none" }}
                   />
                   <div>
                     <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
