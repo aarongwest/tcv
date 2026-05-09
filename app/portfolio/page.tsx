@@ -58,7 +58,7 @@ const companies = [
 // Aaron CX=650 aligns with West (650) → main vertical is a clean straight drop.
 // AI nodes sit to the right of each company card at the same y-level.
 const VW = 1300
-const VH = 620
+const VH = 670
 
 const AARON_CX = 650
 const AARON_TOP = 20
@@ -79,8 +79,8 @@ const CONNECTOR_Y = AARON_TOP + AARON_H / 2    // 67.5
 const BUS_Y = 215
 const CO_TOP_NODE = BUS_Y + 20               // 235
 const CO_W = 170
-const CO_H = 130
-const CO_BOTTOM = CO_TOP_NODE + CO_H         // 365
+const CO_H = 155
+const CO_BOTTOM = CO_TOP_NODE + CO_H         // 390
 
 // AI nodes — to the right of each company card, same y-level
 const AI_W = 110
@@ -357,6 +357,7 @@ export default function Portfolio() {
                   <div>
                     <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
                     <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
+                    <div className="text-[10px] text-muted-foreground/70 mt-1.5 leading-relaxed">{company.description}</div>
                   </div>
                 </a>
               </div>
