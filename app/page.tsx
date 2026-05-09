@@ -40,19 +40,19 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* Left: Name, Role and Photo */}
           <div className="space-y-4">
-            <div className="mb-4 flex items-center gap-4">
+            <div className="mb-4 flex flex-col gap-3">
               <Image
                 src="/images/aaron-west.jpeg"
                 alt="Aaron West"
                 width={80}
                 height={80}
-                className="rounded-lg object-cover w-20 h-20 flex-shrink-0"
+                className="rounded-lg object-cover w-20 h-20"
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/aaron-west-logo.png"
                 alt=""
-                style={{ height: "36px", width: "auto", maxWidth: "160px", objectFit: "contain", filter: isDark ? "invert(1)" : "none" }}
+                style={{ height: "28px", width: "auto", maxWidth: "160px", objectFit: "contain", filter: isDark ? "invert(1)" : "none" }}
               />
             </div>
             <div className="space-y-2">
