@@ -3,6 +3,9 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
+// Logo filter strategy:
+// - Black logos (AW, EHS, West): invert(1) in dark mode so they become white
+// - White logo (Zygur): invert(1) in light mode so it becomes black
 const companies = [
   {
     id: "ehs",
@@ -13,9 +16,11 @@ const companies = [
     url: "https://ehs.inc",
     domain: "ehs.inc",
     status: "active" as const,
+    logo: "/images/ehs-logo.png",
+    logoInvertInDark: true,
     svgX: 117,
     lineDelay: 0,
-    nodeDelay: 800,
+    nodeStaggerDelay: 0,
   },
   {
     id: "west",
@@ -26,9 +31,11 @@ const companies = [
     url: "https://west.industries",
     domain: "west.industries",
     status: "active" as const,
+    logo: "/images/west-logo.png",
+    logoInvertInDark: true,
     svgX: 350,
     lineDelay: 150,
-    nodeDelay: 1000,
+    nodeStaggerDelay: 150,
   },
   {
     id: "zygur",
@@ -39,21 +46,25 @@ const companies = [
     url: "https://zygur.com",
     domain: "zygur.com",
     status: "inactive" as const,
+    logo: "/images/zygur-logo.png",
+    logoInvertInDark: false,
     svgX: 583,
     lineDelay: 300,
-    nodeDelay: 1200,
+    nodeStaggerDelay: 300,
   },
 ]
 
-// SVG viewBox: 0 0 700 420
-// Aaron node: x=260, y=30, w=180, h=80 — center (350,70), bottom y=110
-// Company nodes: y=300, h=90, w=160 — center x = svgX
-// Lines: (350,110) → (svgX, 300)
+// SVG viewBox: 0 0 700 480
+// Aaron node:    x=245, y=20,  w=210, h=120 — center (350,80), bottom y=140
+// Company nodes: x=svgX-85, y=330, w=170, h=130 — center x=svgX
+// Lines: (350,140) → (svgX, 330)
 const LINE_DASHARRAY = 320
+const LINE_Y1 = 140
+const LINE_Y2 = 330
 
 function getLineLength(svgX: number) {
   const dx = 350 - svgX
-  const dy = 300 - 110
+  const dy = LINE_Y2 - LINE_Y1
   return Math.sqrt(dx * dx + dy * dy)
 }
 
@@ -69,7 +80,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const t1 = setTimeout(() => setLinesDrawn(true), 400)
-    const t2 = setTimeout(() => setNodesVisible(true), 1300)
+    const t2 = setTimeout(() => setNodesVisible(true), 1200)
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
@@ -77,6 +88,11 @@ export default function Portfolio() {
   }, [])
 
   const activeData = companies.find((c) => c.id === activeCompany) ?? null
+
+  const logoFilter = (invertInDark: boolean) =>
+    invertInDark
+      ? isDark ? "invert(1)" : "none"
+      : isDark ? "none" : "invert(1)"
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
@@ -103,7 +119,7 @@ export default function Portfolio() {
         {/* Diagram */}
         <div className="relative w-full">
           <svg
-            viewBox="0 0 700 420"
+            viewBox="0 0 700 480"
             className="w-full h-auto"
             preserveAspectRatio="xMidYMid meet"
             style={{ overflow: "visible" }}
@@ -115,9 +131,9 @@ export default function Portfolio() {
                 <line
                   key={company.id}
                   x1="350"
-                  y1="110"
+                  y1={LINE_Y1}
                   x2={company.svgX}
-                  y2="300"
+                  y2={LINE_Y2}
                   stroke="hsl(var(--border))"
                   strokeWidth="1"
                   style={{
@@ -130,10 +146,25 @@ export default function Portfolio() {
             })}
 
             {/* Aaron node */}
-            <foreignObject x="260" y="30" width="180" height="80">
-              <div className="w-full h-full border border-border rounded-lg p-3 bg-background flex flex-col items-center justify-center">
-                <div className="text-sm font-medium text-foreground">Aaron West</div>
-                <div className="text-xs text-muted-foreground mt-0.5">Owner</div>
+            <foreignObject x="245" y="20" width="210" height="120">
+              <div className="w-full h-full border border-border rounded-lg p-3 bg-background flex flex-col items-center justify-center gap-2 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/aaron-west-logo.png"
+                  alt="Aaron West"
+                  style={{
+                    height: "36px",
+                    width: "auto",
+                    maxWidth: "100%",
+                    objectFit: "contain",
+                    filter: logoFilter(true),
+                    transition: "filter 0.3s",
+                  }}
+                />
+                <div className="text-center">
+                  <div className="text-xs font-medium text-foreground">Aaron West</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">Owner</div>
+                </div>
               </div>
             </foreignObject>
 
@@ -141,13 +172,13 @@ export default function Portfolio() {
             {companies.map((company) => (
               <foreignObject
                 key={company.id}
-                x={company.svgX - 80}
-                y="300"
-                width="160"
-                height="90"
+                x={company.svgX - 85}
+                y={LINE_Y2}
+                width="170"
+                height="130"
                 style={{
                   opacity: nodesVisible ? 1 : 0,
-                  transition: `opacity 0.5s ease-in-out ${company.nodeDelay - 1300}ms`,
+                  transition: `opacity 0.5s ease-in-out ${company.nodeStaggerDelay}ms`,
                 }}
               >
                 <a
@@ -157,7 +188,7 @@ export default function Portfolio() {
                   onMouseEnter={() => setActiveCompany(company.id)}
                   onMouseLeave={() => setActiveCompany(null)}
                   className={[
-                    "block w-full h-full border rounded-lg p-3 bg-background transition-all duration-300 cursor-pointer no-underline",
+                    "block w-full h-full border rounded-lg p-3 bg-background transition-all duration-300 cursor-pointer no-underline overflow-hidden",
                     company.status === "inactive" ? "opacity-50" : "",
                     activeCompany === company.id
                       ? "border-muted-foreground/50"
@@ -166,11 +197,29 @@ export default function Portfolio() {
                     .filter(Boolean)
                     .join(" ")}
                 >
-                  <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
-                  <div className="text-xs text-muted-foreground mt-1 leading-tight">{company.domain}</div>
-                  {company.status === "inactive" && (
-                    <div className="text-xs text-muted-foreground/50 mt-1 font-mono text-[10px]">SHELVED</div>
-                  )}
+                  <div className="flex flex-col items-start gap-2 h-full">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      style={{
+                        height: "32px",
+                        width: "auto",
+                        maxWidth: "100%",
+                        objectFit: "contain",
+                        objectPosition: "left center",
+                        filter: logoFilter(company.logoInvertInDark),
+                        transition: "filter 0.3s",
+                      }}
+                    />
+                    <div>
+                      <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
+                      {company.status === "inactive" && (
+                        <div className="text-[10px] text-muted-foreground/50 mt-1 font-mono">SHELVED</div>
+                      )}
+                    </div>
+                  </div>
                 </a>
               </foreignObject>
             ))}
@@ -182,7 +231,7 @@ export default function Portfolio() {
               className="absolute z-10 pointer-events-none"
               style={{
                 left: `${(activeData.svgX / 700) * 100}%`,
-                top: `${(300 / 420) * 100}%`,
+                top: `${(LINE_Y2 / 480) * 100}%`,
                 transform: "translate(-50%, calc(-100% - 12px))",
               }}
             >
