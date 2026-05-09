@@ -336,7 +336,7 @@ export default function Portfolio() {
                   onMouseEnter={() => setActiveCompany(company.id)}
                   onMouseLeave={() => setActiveCompany(null)}
                   className={[
-                    "flex flex-col gap-2 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline",
+                    "flex flex-col gap-2 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline overflow-hidden",
                     activeCompany === company.id
                       ? "border-muted-foreground/50"
                       : "border-border hover:border-muted-foreground/50",
@@ -357,7 +357,7 @@ export default function Portfolio() {
                   <div>
                     <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
                     <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
-                    <div className="text-[10px] text-muted-foreground/70 mt-1.5 leading-relaxed">{company.description}</div>
+                    <div className="text-[10px] text-muted-foreground/70 mt-1.5 leading-relaxed">{company.tagline}</div>
                   </div>
                 </a>
               </div>
