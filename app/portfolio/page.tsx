@@ -15,7 +15,8 @@ const companies = [
     logoDark: "/images/ehs-logo.png",
     logoLight: "/images/ehs-logo.png",
     invertOnDark: true,
-    coCX: 167,
+    coCX: 200,
+    ai: "Gerty AI",
     people: ["Mary - Controller", "Khristyn - Operations", "Isaac - Sales", "Bambi - Marketing"],
   },
   {
@@ -29,7 +30,8 @@ const companies = [
     logoDark: "/images/west-logo.png",
     logoLight: "/images/west-logo.png",
     invertOnDark: false,
-    coCX: 500,
+    coCX: 650,
+    ai: "Kasey AI",
     people: ["Mary - Controller", "Zed - Owner", "Scott - Sales", "Kathy - Dispatch", "Greg - Support"],
   },
   {
@@ -43,27 +45,29 @@ const companies = [
     logoDark: "/images/zygur-logo.png",
     logoLight: "/images/zygur-logo.png",
     invertOnDark: false,
-    coCX: 833,
-    people: ["Mary - Controller", "Hayli", "Zed - Owner", "Greg - Operations"],
+    coCX: 1050,
+    ai: "Hayli AI",
+    people: ["Mary - Controller", "Hayli - Sales", "Zed - Owner", "Greg - Operations"],
   },
 ]
 
 // Virtual coordinate space
-// Aaron center-x = 500 aligns with West (500) → main vertical is a clean straight drop.
-const VW = 1000
-const VH = 640
+// Aaron CX=650 aligns with West (650) → main vertical is a clean straight drop.
+// AI nodes sit to the right of each company card at the same y-level.
+const VW = 1300
+const VH = 620
 
-const AARON_CX = 500
+const AARON_CX = 650
 const AARON_TOP = 20
 const AARON_W = 220
 const AARON_H = 95
 const AARON_BOTTOM = AARON_TOP + AARON_H    // 115
-const AARON_RIGHT = AARON_CX + AARON_W / 2  // 610
+const AARON_RIGHT = AARON_CX + AARON_W / 2  // 760
 
 const COLLIS_TOP = 20
 const COLLIS_W = 140
 const COLLIS_H = 95
-const COLLIS_LEFT = 655
+const COLLIS_LEFT = 780
 const CONNECTOR_Y = AARON_TOP + AARON_H / 2  // 67.5
 
 const BUS_Y = 215
@@ -72,16 +76,30 @@ const CO_W = 170
 const CO_H = 130
 const CO_BOTTOM = CO_TOP_NODE + CO_H         // 365
 
+// AI nodes — to the right of each company card, same y-level
+const AI_W = 110
+const AI_H = 95
+const AI_TOP = CO_TOP_NODE
+const AI_MID_Y = AI_TOP + AI_H / 2           // 282.5
+const AI_GAP = 20
+
 const PERSON_SECTION_TOP = CO_BOTTOM + 20    // 385
 const PERSON_W = 140
 const PERSON_H = 32
 const PERSON_ROW_STEP = PERSON_H + 10        // 42
 
+// AI node left edges and lengths
+const AI_POSITIONS = companies.map((c) => ({
+  id: c.id,
+  left: c.coCX + CO_W / 2 + AI_GAP,
+  len: AI_GAP,
+}))
+
 const AARON_VERTICAL_LEN = CO_TOP_NODE - AARON_BOTTOM             // 120
-const BUS_LEFT_LEN = AARON_CX - companies[0].coCX                 // 333
-const BUS_RIGHT_LEN = companies[2].coCX - AARON_CX                // 333
+const BUS_LEFT_LEN = AARON_CX - companies[0].coCX                 // 450
+const BUS_RIGHT_LEN = companies[2].coCX - AARON_CX                // 400
 const SIDE_DROP_LEN = CO_TOP_NODE - BUS_Y                         // 20
-const COLLIS_LEN = COLLIS_LEFT - AARON_RIGHT                      // 45
+const COLLIS_LEN = COLLIS_LEFT - AARON_RIGHT                      // 20
 const PEOPLE_CONNECTOR_LEN = PERSON_SECTION_TOP - CO_BOTTOM       // 20
 
 function pct(v: number, total: number) {
@@ -98,10 +116,10 @@ export default function Portfolio() {
   }, [isDark])
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase(1), 300)   // Aaron vertical + Collis connector
-    const t2 = setTimeout(() => setPhase(2), 700)   // Bus lines
-    const t3 = setTimeout(() => setPhase(3), 1100)  // Company drops + company nodes
-    const t4 = setTimeout(() => setPhase(4), 1500)  // People connector + people cards
+    const t1 = setTimeout(() => setPhase(1), 300)
+    const t2 = setTimeout(() => setPhase(2), 700)
+    const t3 = setTimeout(() => setPhase(3), 1100)
+    const t4 = setTimeout(() => setPhase(4), 1500)
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4) }
   }, [])
 
@@ -109,7 +127,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
-      <main className="w-full max-w-5xl">
+      <main className="w-full max-w-6xl">
         {/* Header nav */}
         <div className="flex items-center justify-between mb-12">
           <Link
@@ -126,7 +144,7 @@ export default function Portfolio() {
 
         {/* Diagram */}
         <div className="overflow-x-auto">
-          <div className="relative" style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "680px" }}>
+          <div className="relative" style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "800px" }}>
 
             {/* SVG — orthogonal lines only */}
             <svg
@@ -151,7 +169,7 @@ export default function Portfolio() {
                 style={{
                   strokeDasharray: BUS_LEFT_LEN,
                   strokeDashoffset: phase >= 2 ? 0 : BUS_LEFT_LEN,
-                  transition: "stroke-dashoffset 0.45s ease-in-out",
+                  transition: "stroke-dashoffset 0.5s ease-in-out",
                 }}
               />
               {/* Bus right */}
@@ -161,7 +179,7 @@ export default function Portfolio() {
                 style={{
                   strokeDasharray: BUS_RIGHT_LEN,
                   strokeDashoffset: phase >= 2 ? 0 : BUS_RIGHT_LEN,
-                  transition: "stroke-dashoffset 0.45s ease-in-out",
+                  transition: "stroke-dashoffset 0.5s ease-in-out",
                 }}
               />
               {/* EHS and Zygur drops (West shares Aaron vertical) */}
@@ -177,6 +195,19 @@ export default function Portfolio() {
                   }}
                 />
               ))}
+              {/* AI node connectors */}
+              {AI_POSITIONS.map((ai) => (
+                <line
+                  key={`ai-connector-${ai.id}`}
+                  x1={ai.left - AI_GAP} y1={AI_MID_Y} x2={ai.left} y2={AI_MID_Y}
+                  stroke="hsl(var(--border))" strokeWidth="1"
+                  style={{
+                    strokeDasharray: AI_GAP,
+                    strokeDashoffset: phase >= 3 ? 0 : AI_GAP,
+                    transition: "stroke-dashoffset 0.25s ease-in-out 100ms",
+                  }}
+                />
+              ))}
               {/* Collis AI connector */}
               <line
                 x1={AARON_RIGHT} y1={CONNECTOR_Y} x2={COLLIS_LEFT} y2={CONNECTOR_Y}
@@ -184,7 +215,7 @@ export default function Portfolio() {
                 style={{
                   strokeDasharray: COLLIS_LEN,
                   strokeDashoffset: phase >= 1 ? 0 : COLLIS_LEN,
-                  transition: "stroke-dashoffset 0.25s ease-in-out 150ms",
+                  transition: "stroke-dashoffset 0.2s ease-in-out 150ms",
                 }}
               />
               {/* Company → people connectors */}
@@ -287,6 +318,27 @@ export default function Portfolio() {
                     <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
                   </div>
                 </a>
+              </div>
+            ))}
+
+            {/* AI nodes — to the right of each company */}
+            {companies.map((company, i) => (
+              <div
+                key={`${company.id}-ai`}
+                className="absolute"
+                style={{
+                  left: pct(AI_POSITIONS[i].left, VW),
+                  top: pct(AI_TOP, VH),
+                  width: pct(AI_W, VW),
+                  height: pct(AI_H, VH),
+                  opacity: phase >= 3 ? 1 : 0,
+                  transition: "opacity 0.5s ease-in-out 100ms",
+                }}
+              >
+                <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-2">
+                  <div className="text-xs font-medium text-foreground text-center leading-tight">{company.ai}</div>
+                  <div className="text-[10px] text-muted-foreground font-mono">AI</div>
+                </div>
               </div>
             ))}
 
