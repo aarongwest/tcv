@@ -52,7 +52,7 @@ export default function Home() {
               <img
                 src="/images/aaron-west-logo.png"
                 alt=""
-                style={{ height: "28px", width: "auto", maxWidth: "160px", objectFit: "contain", filter: isDark ? "invert(1)" : "none" }}
+                style={{ height: "28px", width: "auto", maxWidth: "160px", objectFit: "contain", objectPosition: "left", display: "block", filter: isDark ? "invert(1)" : "none" }}
               />
             </div>
             <div className="space-y-2">
