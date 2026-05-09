@@ -18,6 +18,24 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
       <main className="w-full max-w-5xl">
+        {/* Nav */}
+        <div className="flex items-center justify-end mb-6">
+          <Link
+            href="/portfolio"
+            className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 text-xs font-mono"
+          >
+            <span>PORTFOLIO</span>
+            <svg
+              className="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
+
         {/* Header Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* Left: Name, Role and Photo */}
