@@ -146,7 +146,7 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
       <main className="w-full max-w-6xl">
         {/* Header nav */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-between mb-24">
           <Link
             href="/"
             className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
@@ -451,7 +451,7 @@ export default function Portfolio() {
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-4 border-t border-border mt-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-4 border-t border-border mt-24">
           <div className="text-xs text-muted-foreground">©Aaron West | ARR ;/</div>
           <button
             onClick={() => setIsDark(!isDark)}
