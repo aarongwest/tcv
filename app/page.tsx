@@ -67,9 +67,9 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">Risk & Compliance Pro w/ EHS Specialization</div>
+                <div className="text-foreground font-medium text-sm">Founder & Owner — EHS, West Industries, Zygur</div>
                 <div className="text-xs text-muted-foreground">
-                  20 years experience | Risk, Compliance, GRC, EHS, ESG, HIPPA, SOC2, ISO, FDA, EPA, OSHA, CalOSHA, WISHA, MIOSH, Tier II, ISNetworld, Avetta, + Anything I Decide to Tackle.
+                  Building companies across EHS compliance automation, field services, and technology research. 20 years in risk, compliance, and safety — now channeled into software and operations.
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">FOCUS AREAS</div>
               <div className="flex flex-wrap gap-2">
-                {["Risk", "Compliance", "Safety Culture", "UnSafety", "Safety-II", "Safety Differently", "Observations", "Mitigation", "Big Data", "Performance", "KPIs"].map((skill) => (
+                {["EHS Compliance", "Field Services", "Technology Research", "AI Automation", "Risk", "Safety Culture", "Big Data", "Operations", "Software", "GRC"].map((skill) => (
                   <span
                     key={skill}
                     className="px-2 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -179,15 +179,15 @@ export default function Home() {
                 <div className="text-xs text-muted-foreground mt-1">Environmental Health & Safety Solutions</div>
               </Link>
                 <Link
-                href="https://gerty.ai"
+                href="https://west.industries"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">Gerty</div>
-                    <div className="text-xs text-muted-foreground/70">gerty.ai</div>
+                    <div className="text-sm font-medium text-foreground">West Industries</div>
+                    <div className="text-xs text-muted-foreground/70">west.industries</div>
                   </div>
                   <svg
                     className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
@@ -203,7 +203,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">Compliance AI Assistant</div>
+                <div className="text-xs text-muted-foreground mt-1">Field Services, Greater Houston</div>
               </Link>
               <Link
                 href="https://zygur.com"
@@ -239,8 +239,7 @@ export default function Home() {
           <div className="space-y-3">
             <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Risk and compliance pro with EHS specialization.
-              Lover of big data and high performance. Habitual maker of AI powered software tools for anything regulated.
+              Founder and owner building across three companies: EHS compliance automation software, Greater Houston field services, and technology research. Background in risk and compliance, now applied to building tools and operations at scale.
             </p>
           </div>
         </div>
