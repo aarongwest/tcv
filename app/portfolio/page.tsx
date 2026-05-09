@@ -172,7 +172,7 @@ export default function Portfolio() {
               {/* Aaron straight down → West / bus junction */}
               <line
                 x1={AARON_CX} y1={AARON_BOTTOM} x2={AARON_CX} y2={CO_TOP_NODE}
-                stroke="hsl(var(--border))" strokeWidth="1"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                 style={{
                   strokeDasharray: AARON_VERTICAL_LEN,
                   strokeDashoffset: phase >= 1 ? 0 : AARON_VERTICAL_LEN,
@@ -182,7 +182,7 @@ export default function Portfolio() {
               {/* Bus left */}
               <line
                 x1={AARON_CX} y1={BUS_Y} x2={companies[0].coCX} y2={BUS_Y}
-                stroke="hsl(var(--border))" strokeWidth="1"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                 style={{
                   strokeDasharray: BUS_LEFT_LEN,
                   strokeDashoffset: phase >= 2 ? 0 : BUS_LEFT_LEN,
@@ -192,7 +192,7 @@ export default function Portfolio() {
               {/* Bus right */}
               <line
                 x1={AARON_CX} y1={BUS_Y} x2={companies[2].coCX} y2={BUS_Y}
-                stroke="hsl(var(--border))" strokeWidth="1"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                 style={{
                   strokeDasharray: BUS_RIGHT_LEN,
                   strokeDashoffset: phase >= 2 ? 0 : BUS_RIGHT_LEN,
@@ -228,7 +228,7 @@ export default function Portfolio() {
               {/* Collis AI connector */}
               <line
                 x1={AARON_RIGHT} y1={CONNECTOR_Y} x2={COLLIS_LEFT} y2={CONNECTOR_Y}
-                stroke="hsl(var(--border))" strokeWidth="1"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                 style={{
                   strokeDasharray: COLLIS_LEN,
                   strokeDashoffset: phase >= 1 ? 0 : COLLIS_LEN,
