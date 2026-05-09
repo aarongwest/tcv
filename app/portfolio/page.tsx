@@ -160,7 +160,7 @@ export default function Portfolio() {
         </div>
 
         {/* Diagram heading */}
-        <h1 className="text-4xl sm:text-5xl font-light tracking-tight mb-16">Company Portfolio</h1>
+        <h1 className="text-4xl sm:text-5xl font-light tracking-tight mb-16 text-center">Company Portfolio</h1>
 
         {/* Diagram */}
         <div className="overflow-x-auto">
