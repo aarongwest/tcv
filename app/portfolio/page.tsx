@@ -44,7 +44,7 @@ const companies = [
     domain: "zygur.com",
     status: "inactive" as const,
     logo: "/images/zygur-logo.png",
-    getFilter: (isDark: boolean) => isDark ? "brightness(2)" : "invert(1) brightness(1.5)",
+    getFilter: (isDark: boolean) => isDark ? "brightness(0) invert(1)" : "invert(1)",
     svgX: 583,
     lineDelay: 300,
     nodeStaggerDelay: 300,
@@ -140,19 +140,14 @@ export default function Portfolio() {
             {/* Aaron node */}
             <foreignObject x="245" y="20" width="210" height="120">
               <div className="w-full h-full border border-border rounded-lg p-3 bg-background flex flex-col items-center justify-center gap-2 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/aaron-west-logo.png"
-                  alt="Aaron West"
-                  style={{
-                    height: "36px",
-                    width: "auto",
-                    maxWidth: "100%",
-                    objectFit: "contain",
-                    filter: isDark ? "invert(1)" : "none",
-                    transition: "filter 0.3s",
-                  }}
-                />
+                <div style={{ filter: isDark ? "invert(1)" : "none", transition: "filter 0.3s" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/aaron-west-logo.png"
+                    alt="Aaron West"
+                    style={{ height: "36px", width: "auto", maxWidth: "100%", objectFit: "contain", display: "block" }}
+                  />
+                </div>
                 <div className="text-center">
                   <div className="text-xs font-medium text-foreground">Aaron West</div>
                   <div className="text-xs text-muted-foreground mt-0.5">Owner</div>
@@ -190,20 +185,14 @@ export default function Portfolio() {
                     .join(" ")}
                 >
                   <div className="flex flex-col items-start gap-2 h-full">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      style={{
-                        height: "32px",
-                        width: "auto",
-                        maxWidth: "100%",
-                        objectFit: "contain",
-                        objectPosition: "left center",
-                        filter: company.getFilter(isDark),
-                        transition: "filter 0.3s",
-                      }}
-                    />
+                    <div style={{ filter: company.getFilter(isDark), transition: "filter 0.3s" }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        style={{ height: "32px", width: "auto", maxWidth: "140px", objectFit: "contain", objectPosition: "left center", display: "block" }}
+                      />
+                    </div>
                     <div>
                       <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
                       <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
