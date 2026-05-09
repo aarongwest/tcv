@@ -163,8 +163,7 @@ export default function Portfolio() {
         <h1 className="text-4xl sm:text-5xl font-light tracking-tight mb-16 text-center">Company Portfolio</h1>
 
         {/* Diagram */}
-        <div className="overflow-x-auto">
-          <div className="relative" style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "800px" }}>
+        <div className="relative" style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "800px" }}>
 
             {/* SVG — orthogonal lines only */}
             <svg
@@ -450,7 +449,6 @@ export default function Portfolio() {
                 </div>
               </div>
             )}
-          </div>
         </div>
 
         {/* Footer */}
