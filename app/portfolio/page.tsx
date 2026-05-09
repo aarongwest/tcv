@@ -159,6 +159,9 @@ export default function Portfolio() {
           <div className="text-xs text-muted-foreground font-mono">PORTFOLIO</div>
         </div>
 
+        {/* Diagram heading */}
+        <h1 className="text-4xl sm:text-5xl font-light tracking-tight mb-16">Company Portfolio</h1>
+
         {/* Diagram */}
         <div className="overflow-x-auto">
           <div className="relative" style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "800px" }}>
