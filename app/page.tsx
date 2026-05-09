@@ -159,7 +159,7 @@ export default function Home() {
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">EHS</div>
+                    <div className="text-sm font-medium text-foreground">EHS, Inc.</div>
                     <div className="text-xs text-muted-foreground/70">ehs.inc</div>
                   </div>
                   <svg
@@ -186,7 +186,7 @@ export default function Home() {
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">West Industries</div>
+                    <div className="text-sm font-medium text-foreground">West Industries Corp.</div>
                     <div className="text-xs text-muted-foreground/70">west.industries</div>
                   </div>
                   <svg
@@ -213,7 +213,7 @@ export default function Home() {
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">Zygur</div>
+                    <div className="text-sm font-medium text-foreground">Zygur Technologies Corp.</div>
                     <div className="text-xs text-muted-foreground/70">zygur.com</div>
                   </div>
                   <svg
