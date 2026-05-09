@@ -14,7 +14,8 @@ const companies = [
     domain: "ehs.inc",
     status: "active" as const,
     logo: "/images/ehs-logo.png",
-    getFilter: (isDark: boolean) => isDark ? "invert(1)" : "none",
+    getFilter: (isDark: boolean) => (isDark ? "invert(1)" : "none"),
+    // SVG coordinate for line endpoint and HTML centering
     svgX: 117,
     lineDelay: 0,
     nodeStaggerDelay: 0,
@@ -44,22 +45,36 @@ const companies = [
     domain: "zygur.com",
     status: "inactive" as const,
     logo: "/images/zygur-logo.png",
-    getFilter: (isDark: boolean) => isDark ? "brightness(0) invert(1)" : "invert(1)",
+    // brightness(0) collapses all channels to black, invert(1) flips to solid white
+    getFilter: (isDark: boolean) => (isDark ? "brightness(0) invert(1)" : "invert(1)"),
     svgX: 583,
     lineDelay: 300,
     nodeStaggerDelay: 300,
   },
 ]
 
-// SVG viewBox: 0 0 700 480
-// Aaron node:    x=245, y=20,  w=210, h=120 — center (350,80), bottom y=140
-// Company nodes: x=svgX-85, y=330, w=170, h=130 — center x=svgX
-// Lines: (350,140) → (svgX, 330)
-const LINE_DASHARRAY = 320
-const LINE_Y1 = 140
-const LINE_Y2 = 330
+// Virtual coordinate space matching the SVG viewBox (700 × 480).
+// HTML nodes are absolutely positioned using these as percentages of the container.
+//
+// Aaron node:    center-x=350, top=20, w=210, h=120  → bottom y=140
+// Company nodes: center-x=svgX, top=330, w=170, h=130
+// Lines:         (350, 140) → (svgX, 330)
+const VW = 700
+const VH = 480
+const AARON_TOP = 20
+const AARON_W = 210
+const AARON_H = 120
+const CO_TOP = 330
+const CO_W = 170
+const CO_H = 130
+const LINE_Y1 = AARON_TOP + AARON_H   // 140
+const LINE_Y2 = CO_TOP                 // 330
 
-function getLineLength(svgX: number) {
+function pct(v: number, total: number) {
+  return `${(v / total) * 100}%`
+}
+
+function lineLen(svgX: number) {
   const dx = 350 - svgX
   const dy = LINE_Y2 - LINE_Y1
   return Math.sqrt(dx * dx + dy * dy)
@@ -108,62 +123,87 @@ export default function Portfolio() {
           <div className="text-xs text-muted-foreground font-mono">PORTFOLIO</div>
         </div>
 
-        {/* Diagram */}
-        <div className="relative w-full">
-          <svg
-            viewBox="0 0 700 480"
-            className="w-full h-auto"
-            preserveAspectRatio="xMidYMid meet"
-            style={{ overflow: "visible" }}
+        {/* Diagram — horizontal scroll on narrow viewports */}
+        <div className="overflow-x-auto">
+          {/*
+            Container maintains a 700:480 aspect ratio so SVG coordinates
+            map 1:1 to percentage positions of HTML nodes.
+            min-width keeps nodes legible on small screens.
+          */}
+          <div
+            className="relative"
+            style={{ aspectRatio: `${VW} / ${VH}`, minWidth: "560px" }}
           >
-            {/* Animated connection lines */}
-            {companies.map((company) => {
-              const len = getLineLength(company.svgX)
-              return (
-                <line
-                  key={company.id}
-                  x1="350"
-                  y1={LINE_Y1}
-                  x2={company.svgX}
-                  y2={LINE_Y2}
-                  stroke="hsl(var(--border))"
-                  strokeWidth="1"
+            {/* SVG layer — animated lines only, no foreignObject */}
+            <svg
+              viewBox={`0 0 ${VW} ${VH}`}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {companies.map((company) => {
+                const len = lineLen(company.svgX)
+                return (
+                  <line
+                    key={company.id}
+                    x1="350"
+                    y1={LINE_Y1}
+                    x2={company.svgX}
+                    y2={LINE_Y2}
+                    stroke="hsl(var(--border))"
+                    strokeWidth="1"
+                    style={{
+                      strokeDasharray: len,
+                      strokeDashoffset: linesDrawn ? 0 : len,
+                      transition: `stroke-dashoffset 0.7s ease-in-out ${company.lineDelay}ms`,
+                    }}
+                  />
+                )
+              })}
+            </svg>
+
+            {/* Aaron node — centered at (50%, 4.17%), size 30% × 25% */}
+            <div
+              className="absolute"
+              style={{
+                left: "50%",
+                top: pct(AARON_TOP, VH),
+                transform: "translateX(-50%)",
+                width: pct(AARON_W, VW),
+                height: pct(AARON_H, VH),
+              }}
+            >
+              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-2 p-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/aaron-west-logo.png"
+                  alt="Aaron West"
                   style={{
-                    strokeDasharray: LINE_DASHARRAY,
-                    strokeDashoffset: linesDrawn ? 0 : len,
-                    transition: `stroke-dashoffset 0.7s ease-in-out ${company.lineDelay}ms`,
+                    height: "36px",
+                    width: "auto",
+                    maxWidth: "80%",
+                    objectFit: "contain",
+                    filter: isDark ? "invert(1)" : "none",
+                    transition: "filter 0.3s",
                   }}
                 />
-              )
-            })}
-
-            {/* Aaron node */}
-            <foreignObject x="245" y="20" width="210" height="120">
-              <div className="w-full h-full border border-border rounded-lg p-3 bg-background flex flex-col items-center justify-center gap-2 overflow-hidden">
-                <div style={{ filter: isDark ? "invert(1)" : "none", transition: "filter 0.3s" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/aaron-west-logo.png"
-                    alt="Aaron West"
-                    style={{ height: "36px", width: "auto", maxWidth: "100%", objectFit: "contain", display: "block" }}
-                  />
-                </div>
                 <div className="text-center">
                   <div className="text-xs font-medium text-foreground">Aaron West</div>
-                  <div className="text-xs text-muted-foreground mt-0.5">Owner</div>
+                  <div className="text-xs text-muted-foreground">Owner</div>
                 </div>
               </div>
-            </foreignObject>
+            </div>
 
-            {/* Company nodes */}
+            {/* Company nodes — centered at (svgX/VW, CO_TOP/VH), size 24.3% × 27.1% */}
             {companies.map((company) => (
-              <foreignObject
+              <div
                 key={company.id}
-                x={company.svgX - 85}
-                y={LINE_Y2}
-                width="170"
-                height="130"
+                className="absolute"
                 style={{
+                  left: pct(company.svgX, VW),
+                  top: pct(CO_TOP, VH),
+                  transform: "translateX(-50%)",
+                  width: pct(CO_W, VW),
+                  height: pct(CO_H, VH),
                   opacity: nodesVisible ? 1 : 0,
                   transition: `opacity 0.5s ease-in-out ${company.nodeStaggerDelay}ms`,
                 }}
@@ -175,7 +215,7 @@ export default function Portfolio() {
                   onMouseEnter={() => setActiveCompany(company.id)}
                   onMouseLeave={() => setActiveCompany(null)}
                   className={[
-                    "block w-full h-full border rounded-lg p-3 bg-background transition-all duration-300 cursor-pointer no-underline overflow-hidden",
+                    "flex flex-col justify-between w-full h-full border rounded-lg p-3 bg-background transition-colors duration-300 no-underline",
                     company.status === "inactive" ? "opacity-50" : "",
                     activeCompany === company.id
                       ? "border-muted-foreground/50"
@@ -184,45 +224,49 @@ export default function Portfolio() {
                     .filter(Boolean)
                     .join(" ")}
                 >
-                  <div className="flex flex-col items-start gap-2 h-full">
-                    <div style={{ filter: company.getFilter(isDark), transition: "filter 0.3s" }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        style={{ height: "32px", width: "auto", maxWidth: "140px", objectFit: "contain", objectPosition: "left center", display: "block" }}
-                      />
-                    </div>
-                    <div>
-                      <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
-                      {company.status === "inactive" && (
-                        <div className="text-[10px] text-muted-foreground/50 mt-1 font-mono">SHELVED</div>
-                      )}
-                    </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    style={{
+                      height: "28px",
+                      width: "auto",
+                      maxWidth: "100%",
+                      objectFit: "contain",
+                      objectPosition: "left center",
+                      filter: company.getFilter(isDark),
+                      transition: "filter 0.3s",
+                    }}
+                  />
+                  <div>
+                    <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
+                    {company.status === "inactive" && (
+                      <div className="text-[10px] text-muted-foreground/50 mt-1 font-mono">SHELVED</div>
+                    )}
                   </div>
                 </a>
-              </foreignObject>
-            ))}
-          </svg>
-
-          {/* Tooltip */}
-          {activeData && (
-            <div
-              className="absolute z-10 pointer-events-none"
-              style={{
-                left: `${(activeData.svgX / 700) * 100}%`,
-                top: `${(LINE_Y2 / 480) * 100}%`,
-                transform: "translate(-50%, calc(-100% - 12px))",
-              }}
-            >
-              <div className="bg-background border border-border rounded-lg p-3 shadow-sm w-52">
-                <div className="text-xs font-medium text-foreground mb-1">{activeData.name}</div>
-                <div className="text-xs text-muted-foreground font-mono mb-2">{activeData.tagline}</div>
-                <div className="text-xs text-muted-foreground/80 leading-relaxed">{activeData.description}</div>
               </div>
-            </div>
-          )}
+            ))}
+
+            {/* Tooltip */}
+            {activeData && (
+              <div
+                className="absolute z-10 pointer-events-none"
+                style={{
+                  left: pct(activeData.svgX, VW),
+                  top: pct(CO_TOP, VH),
+                  transform: "translate(-50%, calc(-100% - 12px))",
+                }}
+              >
+                <div className="bg-background border border-border rounded-lg p-3 shadow-sm w-52">
+                  <div className="text-xs font-medium text-foreground mb-1">{activeData.name}</div>
+                  <div className="text-xs text-muted-foreground font-mono mb-2">{activeData.tagline}</div>
+                  <div className="text-xs text-muted-foreground/80 leading-relaxed">{activeData.description}</div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Footer */}
