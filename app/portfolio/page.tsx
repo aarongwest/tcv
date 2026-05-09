@@ -41,12 +41,12 @@ const companies = [
   {
     id: "zygur",
     name: "Zygur Technologies Corp.",
-    tagline: "Compliance Tools for Regulated Devs",
+    tagline: "Technology Research",
     description:
-      "Shelved technology company. Legacy compliance tooling work that informed the direction of EHS, Inc. and Gerty AI.",
+      "Technology research company exploring emerging tools, frameworks, and ideas. Incubator for concepts that may inform future products.",
     url: "https://zygur.com",
     domain: "zygur.com",
-    status: "inactive" as const,
+    status: "active" as const,
     logoDark: "/images/zygur-logo.png",
     logoLight: "/images/zygur-logo.png",
     invertOnDark: false,
