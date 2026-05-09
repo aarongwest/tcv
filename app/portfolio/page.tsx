@@ -412,7 +412,8 @@ export default function Portfolio() {
                   transform: "translate(-50%, calc(-100% - 12px))",
                 }}
               >
-                <div className="bg-background border border-border rounded-lg p-3 shadow-sm w-52">
+                <div className="border border-border rounded-lg p-3 shadow-xl w-52"
+                  style={{ backgroundColor: "hsl(var(--background))" }}>
                   <div className="text-xs font-medium text-foreground mb-1">{activeData.name}</div>
                   <div className="text-xs text-muted-foreground font-mono mb-2">{activeData.tagline}</div>
                   <div className="text-xs text-muted-foreground/80 leading-relaxed">{activeData.description}</div>
@@ -430,7 +431,8 @@ export default function Portfolio() {
                   transform: "translate(-50%, calc(-100% - 12px))",
                 }}
               >
-                <div className="bg-background border border-border rounded-lg p-3 shadow-sm w-56">
+                <div className="border border-border rounded-lg p-3 shadow-xl w-56"
+                  style={{ backgroundColor: "hsl(var(--background))" }}>
                   <div className="text-xs font-medium text-foreground mb-1">{activeAIData.ai}</div>
                   <div className="text-[10px] text-muted-foreground font-mono mb-2">CEO — Reports to Collis AI</div>
                   <div className="text-xs text-muted-foreground/80 leading-relaxed">{activeAIData.aiDescription}</div>
