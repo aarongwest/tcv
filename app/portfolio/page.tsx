@@ -68,7 +68,10 @@ const COLLIS_TOP = 20
 const COLLIS_W = 140
 const COLLIS_H = 95
 const COLLIS_LEFT = 780
-const CONNECTOR_Y = AARON_TOP + AARON_H / 2  // 67.5
+const COLLIS_CX = COLLIS_LEFT + COLLIS_W / 2  // 850
+const COLLIS_BOTTOM = COLLIS_TOP + COLLIS_H    // 115
+const COLLIS_BUS_Y = 175
+const CONNECTOR_Y = AARON_TOP + AARON_H / 2    // 67.5
 
 const BUS_Y = 215
 const CO_TOP_NODE = BUS_Y + 20               // 235
@@ -92,6 +95,7 @@ const PERSON_ROW_STEP = PERSON_H + 10        // 42
 const AI_POSITIONS = companies.map((c) => ({
   id: c.id,
   left: c.coCX + CO_W / 2 + AI_GAP,
+  cX: c.coCX + CO_W / 2 + AI_GAP + AI_W / 2,
   len: AI_GAP,
 }))
 
@@ -218,6 +222,31 @@ export default function Portfolio() {
                   transition: "stroke-dashoffset 0.2s ease-in-out 150ms",
                 }}
               />
+              {/* Collis AI → AI CEO reporting lines (dashed = dotted-line reporting) */}
+              <line
+                x1={COLLIS_CX} y1={COLLIS_BOTTOM} x2={COLLIS_CX} y2={COLLIS_BUS_Y}
+                stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
+              />
+              <line
+                x1={COLLIS_CX} y1={COLLIS_BUS_Y} x2={AI_POSITIONS[0].cX} y2={COLLIS_BUS_Y}
+                stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
+              />
+              <line
+                x1={COLLIS_CX} y1={COLLIS_BUS_Y} x2={AI_POSITIONS[2].cX} y2={COLLIS_BUS_Y}
+                stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
+              />
+              {AI_POSITIONS.map((ai) => (
+                <line
+                  key={`ceo-drop-${ai.id}`}
+                  x1={ai.cX} y1={COLLIS_BUS_Y} x2={ai.cX} y2={AI_TOP}
+                  stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                  style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
+                />
+              ))}
+
               {/* Company → people connectors */}
               {companies.map((company) => (
                 <line
@@ -337,7 +366,7 @@ export default function Portfolio() {
               >
                 <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-2">
                   <div className="text-xs font-medium text-foreground text-center leading-tight">{company.ai}</div>
-                  <div className="text-[10px] text-muted-foreground font-mono">AI</div>
+                  <div className="text-[10px] text-muted-foreground font-mono">CEO</div>
                 </div>
               </div>
             ))}
