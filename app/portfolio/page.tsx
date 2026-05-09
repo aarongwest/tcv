@@ -90,7 +90,7 @@ const AI_MID_Y = AI_TOP + AI_H / 2           // 292.5
 const AI_GAP = 20
 
 const PERSON_SECTION_TOP = CO_BOTTOM + 20    // 385
-const PERSON_W = 140
+const PERSON_W = 175
 const PERSON_H = 32
 const PERSON_ROW_STEP = PERSON_H + 10        // 42
 
@@ -404,7 +404,7 @@ export default function Portfolio() {
                   }}
                 >
                   <div className="w-full h-full border border-border rounded-md bg-background flex items-center justify-center">
-                    <span className="text-xs text-muted-foreground">{name}</span>
+                    <span className="text-xs text-muted-foreground whitespace-nowrap">{name}</span>
                   </div>
                 </div>
               ))
