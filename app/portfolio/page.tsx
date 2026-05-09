@@ -63,18 +63,18 @@ const VH = 670
 const AARON_CX = 650
 const AARON_TOP = 20
 const AARON_W = 220
-const AARON_H = 95
-const AARON_BOTTOM = AARON_TOP + AARON_H    // 115
+const AARON_H = 115
+const AARON_BOTTOM = AARON_TOP + AARON_H    // 135
 const AARON_RIGHT = AARON_CX + AARON_W / 2  // 760
 
 const COLLIS_TOP = 20
 const COLLIS_W = 140
-const COLLIS_H = 95
+const COLLIS_H = 115
 const COLLIS_LEFT = 780
 const COLLIS_CX = COLLIS_LEFT + COLLIS_W / 2  // 850
-const COLLIS_BOTTOM = COLLIS_TOP + COLLIS_H    // 115
-const COLLIS_BUS_Y = 175
-const CONNECTOR_Y = AARON_TOP + AARON_H / 2    // 67.5
+const COLLIS_BOTTOM = COLLIS_TOP + COLLIS_H    // 135
+const COLLIS_BUS_Y = 180
+const CONNECTOR_Y = AARON_TOP + AARON_H / 2    // 77.5
 
 const BUS_Y = 215
 const CO_TOP_NODE = BUS_Y + 20               // 235
@@ -84,9 +84,9 @@ const CO_BOTTOM = CO_TOP_NODE + CO_H         // 390
 
 // AI nodes — to the right of each company card, same y-level
 const AI_W = 110
-const AI_H = 95
+const AI_H = 115
 const AI_TOP = CO_TOP_NODE
-const AI_MID_Y = AI_TOP + AI_H / 2           // 282.5
+const AI_MID_Y = AI_TOP + AI_H / 2           // 292.5
 const AI_GAP = 20
 
 const PERSON_SECTION_TOP = CO_BOTTOM + 20    // 385
@@ -285,7 +285,7 @@ export default function Portfolio() {
                 height: pct(AARON_H, VH),
               }}
             >
-              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-2 p-3">
+              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-2 p-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/aaron-west-logo.png"
@@ -309,7 +309,7 @@ export default function Portfolio() {
                 height: pct(COLLIS_H, VH),
               }}
             >
-              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-3">
+              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-4">
                 <div className="text-xs font-medium text-foreground">Collis AI</div>
                 <div className="text-xs text-muted-foreground text-center leading-tight">Co-Owner</div>
               </div>
@@ -336,7 +336,7 @@ export default function Portfolio() {
                   onMouseEnter={() => setActiveCompany(company.id)}
                   onMouseLeave={() => setActiveCompany(null)}
                   className={[
-                    "flex flex-col gap-2 w-full h-full border rounded-lg p-3 bg-background transition-colors duration-300 no-underline",
+                    "flex flex-col gap-2 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline",
                     activeCompany === company.id
                       ? "border-muted-foreground/50"
                       : "border-border hover:border-muted-foreground/50",
@@ -378,7 +378,7 @@ export default function Portfolio() {
                 }}
               >
                 <div
-                  className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-2 cursor-default transition-colors duration-300 hover:border-muted-foreground/50"
+                  className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-4 cursor-default transition-colors duration-300 hover:border-muted-foreground/50"
                   onMouseEnter={() => setActiveAI(company.id)}
                   onMouseLeave={() => setActiveAI(null)}
                 >
