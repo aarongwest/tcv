@@ -16,7 +16,7 @@ const companies = [
     logoLight: "/images/ehs-logo.png",
     invertOnDark: true,
     coCX: 167,
-    people: ["Mary", "Khristyn", "Isaac", "Bambi"],
+    people: ["Mary - Controller", "Khristyn - Operations", "Isaac - Sales", "Bambi - Marketing"],
   },
   {
     id: "west",
@@ -30,7 +30,7 @@ const companies = [
     logoLight: "/images/west-logo.png",
     invertOnDark: false,
     coCX: 500,
-    people: ["Mary", "Zed", "Scott", "Kathy", "Greg"],
+    people: ["Mary - Controller", "Zed - Owner", "Scott - Sales", "Kathy - Dispatch", "Greg - Support"],
   },
   {
     id: "zygur",
@@ -44,7 +44,7 @@ const companies = [
     logoLight: "/images/zygur-logo.png",
     invertOnDark: false,
     coCX: 833,
-    people: ["Hayli", "Zed", "Greg"],
+    people: ["Mary - Controller", "Hayli", "Zed - Owner", "Greg - Operations"],
   },
 ]
 
