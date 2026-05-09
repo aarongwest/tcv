@@ -73,7 +73,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">Founder & Owner — EHS, West Industries, Zygur</div>
+                <div className="text-foreground font-medium text-sm">Founder & Owner</div>
                 <div className="text-xs text-muted-foreground">
                   Building companies across EHS compliance automation, field services, and technology research. 20 years in all three of these industries.
                 </div>
