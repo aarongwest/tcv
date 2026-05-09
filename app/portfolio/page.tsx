@@ -204,7 +204,7 @@ export default function Portfolio() {
                 <line
                   key={`drop-${company.id}`}
                   x1={company.coCX} y1={BUS_Y} x2={company.coCX} y2={CO_TOP_NODE}
-                  stroke="hsl(var(--border))" strokeWidth="1"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                   style={{
                     strokeDasharray: SIDE_DROP_LEN,
                     strokeDashoffset: phase >= 3 ? 0 : SIDE_DROP_LEN,
@@ -217,7 +217,7 @@ export default function Portfolio() {
                 <line
                   key={`ai-connector-${ai.id}`}
                   x1={ai.left - AI_GAP} y1={AI_MID_Y} x2={ai.left} y2={AI_MID_Y}
-                  stroke="hsl(var(--border))" strokeWidth="1"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                   style={{
                     strokeDasharray: AI_GAP,
                     strokeDashoffset: phase >= 3 ? 0 : AI_GAP,
@@ -238,24 +238,24 @@ export default function Portfolio() {
               {/* Collis AI → AI CEO reporting lines (dashed = dotted-line reporting) */}
               <line
                 x1={COLLIS_CX} y1={COLLIS_BOTTOM} x2={COLLIS_CX} y2={COLLIS_BUS_Y}
-                stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 4"
                 style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
               />
               <line
                 x1={COLLIS_CX} y1={COLLIS_BUS_Y} x2={AI_POSITIONS[0].cX} y2={COLLIS_BUS_Y}
-                stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 4"
                 style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
               />
               <line
                 x1={COLLIS_CX} y1={COLLIS_BUS_Y} x2={AI_POSITIONS[2].cX} y2={COLLIS_BUS_Y}
-                stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 4"
                 style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
               />
               {AI_POSITIONS.map((ai) => (
                 <line
                   key={`ceo-drop-${ai.id}`}
                   x1={ai.cX} y1={COLLIS_BUS_Y} x2={ai.cX} y2={AI_TOP}
-                  stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 4"
                   style={{ opacity: phase >= 3 ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
                 />
               ))}
@@ -265,7 +265,7 @@ export default function Portfolio() {
                 <line
                   key={`people-drop-${company.id}`}
                   x1={company.coCX} y1={CO_BOTTOM} x2={company.coCX} y2={PERSON_SECTION_TOP}
-                  stroke="hsl(var(--border))" strokeWidth="1"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                   style={{
                     strokeDasharray: PEOPLE_CONNECTOR_LEN,
                     strokeDashoffset: phase >= 4 ? 0 : PEOPLE_CONNECTOR_LEN,
