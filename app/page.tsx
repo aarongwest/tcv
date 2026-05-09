@@ -40,7 +40,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* Left: Name, Role and Photo */}
           <div className="space-y-4">
-            <div className="mb-4 flex flex-col gap-3">
+            <div className="flex flex-col gap-5">
               <Image
                 src="/images/aaron-west.jpeg"
                 alt="Aaron West"
@@ -52,12 +52,12 @@ export default function Home() {
               <img
                 src="/images/aaron-west-logo.png"
                 alt=""
-                style={{ height: "28px", width: "auto", maxWidth: "160px", objectFit: "contain", objectPosition: "left", display: "block", filter: isDark ? "invert(1)" : "none" }}
+                style={{ height: "42px", width: "auto", maxWidth: "180px", objectFit: "contain", objectPosition: "left", display: "block", filter: isDark ? "invert(1)" : "none" }}
               />
-            </div>
-            <div className="space-y-2">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-tight">Aaron West</h1>
-              <div className="text-xs text-muted-foreground">John 3:16</div>
+              <div className="space-y-2">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-tight">Aaron West</h1>
+                <div className="text-xs text-muted-foreground">John 3:16</div>
+              </div>
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
