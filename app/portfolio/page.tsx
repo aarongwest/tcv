@@ -54,11 +54,17 @@ const companies = [
   },
 ]
 
+const divisions = [
+  { id: "wlc", name: "West Land Clearing", tagline: "Land clearing, forestry mulching, site prep", url: "https://westlandclearing.com", domain: "westlandclearing.com" },
+  { id: "wc",  name: "West Construction",  tagline: "Excavation, grading, drainage",               url: "https://west.construction",    domain: "west.construction"    },
+  { id: "ww",  name: "West Weld",          tagline: "Mobile welding, fabrication, repair",          url: "https://westweld.co",          domain: "westweld.co"          },
+]
+
 // Virtual coordinate space
 // Aaron CX=650 aligns with West (650) → main vertical is a clean straight drop.
 // AI nodes sit to the right of each company card at the same y-level.
 const VW = 1300
-const VH = 670
+const VH = 700
 
 const AARON_CX = 650
 const AARON_TOP = 20
@@ -109,6 +115,17 @@ const SIDE_DROP_LEN = CO_TOP_NODE - BUS_Y                         // 20
 const COLLIS_LEN = COLLIS_LEFT - AARON_RIGHT                      // 20
 const PEOPLE_CONNECTOR_LEN = PERSON_SECTION_TOP - CO_BOTTOM       // 20
 
+const WEST_CX = companies[1].coCX                                  // 650
+const DIV_BUS_Y = CO_BOTTOM + 40                                   // 430
+const DIV_TOP = DIV_BUS_Y + 20                                     // 450
+const DIV_W = 165
+const DIV_H = 100
+const DIV_SPACING = 195
+const DIV_CXS = [WEST_CX - DIV_SPACING, WEST_CX, WEST_CX + DIV_SPACING]
+const DIV_TRUNK_LEN = DIV_TOP - CO_BOTTOM                          // 60
+const DIV_BUS_LEN = DIV_SPACING                                    // 195
+const DIV_DROP_LEN = DIV_TOP - DIV_BUS_Y                          // 20
+
 function pct(v: number, total: number) {
   return `${(v / total) * 100}%`
 }
@@ -135,7 +152,8 @@ export default function Portfolio() {
     const t2 = setTimeout(() => setPhase(2), 700)
     const t3 = setTimeout(() => setPhase(3), 1100)
     const t4 = setTimeout(() => setPhase(4), 1500)
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4) }
+    const t5 = setTimeout(() => setPhase(5), 1900)
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); clearTimeout(t5) }
   }, [])
 
   const activeData = companies.find((c) => c.id === activeCompany) ?? null
@@ -262,8 +280,8 @@ export default function Portfolio() {
                 />
               ))}
 
-              {/* Company → people connectors */}
-              {companies.map((company) => (
+              {/* Company → people connectors (West excluded — has division sub-bus instead) */}
+              {companies.filter(c => c.id !== "west").map((company) => (
                 <line
                   key={`people-drop-${company.id}`}
                   x1={company.coCX} y1={CO_BOTTOM} x2={company.coCX} y2={PERSON_SECTION_TOP}
@@ -272,6 +290,49 @@ export default function Portfolio() {
                     strokeDasharray: PEOPLE_CONNECTOR_LEN,
                     strokeDashoffset: phase >= 4 ? 0 : PEOPLE_CONNECTOR_LEN,
                     transition: "stroke-dashoffset 0.2s ease-in-out",
+                  }}
+                />
+              ))}
+              {/* West → division sub-bus trunk */}
+              <line
+                x1={WEST_CX} y1={CO_BOTTOM} x2={WEST_CX} y2={DIV_TOP}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                style={{
+                  strokeDasharray: DIV_TRUNK_LEN,
+                  strokeDashoffset: phase >= 5 ? 0 : DIV_TRUNK_LEN,
+                  transition: "stroke-dashoffset 0.4s ease-in-out",
+                }}
+              />
+              {/* Division sub-bus left */}
+              <line
+                x1={WEST_CX} y1={DIV_BUS_Y} x2={DIV_CXS[0]} y2={DIV_BUS_Y}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                style={{
+                  strokeDasharray: DIV_BUS_LEN,
+                  strokeDashoffset: phase >= 5 ? 0 : DIV_BUS_LEN,
+                  transition: "stroke-dashoffset 0.4s ease-in-out 80ms",
+                }}
+              />
+              {/* Division sub-bus right */}
+              <line
+                x1={WEST_CX} y1={DIV_BUS_Y} x2={DIV_CXS[2]} y2={DIV_BUS_Y}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                style={{
+                  strokeDasharray: DIV_BUS_LEN,
+                  strokeDashoffset: phase >= 5 ? 0 : DIV_BUS_LEN,
+                  transition: "stroke-dashoffset 0.4s ease-in-out 80ms",
+                }}
+              />
+              {/* Division drops (left and right; center shares trunk) */}
+              {[DIV_CXS[0], DIV_CXS[2]].map((cx) => (
+                <line
+                  key={`div-drop-${cx}`}
+                  x1={cx} y1={DIV_BUS_Y} x2={cx} y2={DIV_TOP}
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                  style={{
+                    strokeDasharray: DIV_DROP_LEN,
+                    strokeDashoffset: phase >= 5 ? 0 : DIV_DROP_LEN,
+                    transition: "stroke-dashoffset 0.2s ease-in-out 200ms",
                   }}
                 />
               ))}
@@ -390,8 +451,35 @@ export default function Portfolio() {
               </div>
             ))}
 
-            {/* People cards under each company */}
-            {companies.map((company) =>
+            {/* Division cards — below West Industries */}
+            {divisions.map((div, i) => (
+              <div
+                key={div.id}
+                className="absolute"
+                style={{
+                  left: pct(DIV_CXS[i] - DIV_W / 2, VW),
+                  top: pct(DIV_TOP, VH),
+                  width: pct(DIV_W, VW),
+                  height: pct(DIV_H, VH),
+                  opacity: phase >= 5 ? 1 : 0,
+                  transition: `opacity 0.4s ease-in-out ${i * 80}ms`,
+                }}
+              >
+                <a
+                  href={div.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col gap-1.5 w-full h-full border border-border rounded-lg p-3 bg-background hover:border-muted-foreground/50 transition-colors duration-300 no-underline overflow-hidden"
+                >
+                  <div className="text-xs font-medium text-foreground leading-tight">{div.name}</div>
+                  <div className="text-xs text-muted-foreground font-mono">{div.domain}</div>
+                  <div className="text-[10px] text-muted-foreground/70 leading-relaxed mt-0.5">{div.tagline}</div>
+                </a>
+              </div>
+            ))}
+
+            {/* People cards under each company (West excluded — divisions shown instead) */}
+            {companies.filter(c => c.id !== "west").map((company) =>
               company.people.map((name, i) => (
                 <div
                   key={`${company.id}-${name}`}
