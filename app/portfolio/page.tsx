@@ -64,7 +64,7 @@ const divisions = [
 // Aaron CX=650 aligns with West (650) → main vertical is a clean straight drop.
 // AI nodes sit to the right of each company card at the same y-level.
 const VW = 1300
-const VH = 700
+const VH = 900
 
 const AARON_CX = 650
 const AARON_TOP = 20
@@ -119,12 +119,15 @@ const WEST_CX = companies[1].coCX                                  // 650
 const DIV_BUS_Y = CO_BOTTOM + 40                                   // 430
 const DIV_TOP = DIV_BUS_Y + 20                                     // 450
 const DIV_W = 165
-const DIV_H = 100
+const DIV_H = 125
 const DIV_SPACING = 195
 const DIV_CXS = [WEST_CX - DIV_SPACING, WEST_CX, WEST_CX + DIV_SPACING]
-const DIV_TRUNK_LEN = DIV_TOP - CO_BOTTOM                          // 60
+const DIV_BOTTOM = DIV_TOP + DIV_H                                 // 575
+const DIV_TRUNK_LEN = DIV_TOP - CO_BOTTOM                         // 60
 const DIV_BUS_LEN = DIV_SPACING                                    // 195
 const DIV_DROP_LEN = DIV_TOP - DIV_BUS_Y                          // 20
+const DIV_PERSON_TOP = DIV_BOTTOM + 20                             // 595
+const DIV_PEOPLE_CONNECTOR_LEN = 20
 
 function pct(v: number, total: number) {
   return `${(v / total) * 100}%`
@@ -336,6 +339,16 @@ export default function Portfolio() {
                   }}
                 />
               ))}
+              {/* West division people connector (center column drops to shared people) */}
+              <line
+                x1={WEST_CX} y1={DIV_BOTTOM} x2={WEST_CX} y2={DIV_PERSON_TOP}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                style={{
+                  strokeDasharray: DIV_PEOPLE_CONNECTOR_LEN,
+                  strokeDashoffset: phase >= 5 ? 0 : DIV_PEOPLE_CONNECTOR_LEN,
+                  transition: "stroke-dashoffset 0.2s ease-in-out 400ms",
+                }}
+              />
             </svg>
 
             {/* Aaron node */}
@@ -469,12 +482,32 @@ export default function Portfolio() {
                   href={div.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col gap-1.5 w-full h-full border border-border rounded-lg p-3 bg-background hover:border-muted-foreground/50 transition-colors duration-300 no-underline overflow-hidden"
+                  className="flex flex-col gap-1.5 w-full h-full border border-border rounded-lg p-4 bg-background hover:border-muted-foreground/50 transition-colors duration-300 no-underline overflow-hidden"
                 >
                   <div className="text-xs font-medium text-foreground leading-tight">{div.name}</div>
-                  <div className="text-xs text-muted-foreground font-mono">{div.domain}</div>
+                  <div className="text-xs text-muted-foreground">{div.domain}</div>
                   <div className="text-[10px] text-muted-foreground/70 leading-relaxed mt-0.5">{div.tagline}</div>
                 </a>
+              </div>
+            ))}
+
+            {/* People cards shared across all West divisions */}
+            {(companies.find(c => c.id === "west")?.people ?? []).map((name, i) => (
+              <div
+                key={`west-div-person-${name}`}
+                className="absolute"
+                style={{
+                  left: pct(WEST_CX - PERSON_W / 2, VW),
+                  top: pct(DIV_PERSON_TOP + i * PERSON_ROW_STEP, VH),
+                  width: pct(PERSON_W, VW),
+                  height: pct(PERSON_H, VH),
+                  opacity: phase >= 5 ? 1 : 0,
+                  transition: `opacity 0.4s ease-in-out ${300 + i * 60}ms`,
+                }}
+              >
+                <div className="w-full h-full border border-border rounded-md bg-background flex items-center justify-center">
+                  <span className="text-xs text-muted-foreground whitespace-nowrap">{name}</span>
+                </div>
               </div>
             ))}
 
