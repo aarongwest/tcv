@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 const companies = [
   {
     id: "ehs",
+    color: "#e9ff70",
     name: "EHS, Inc.",
     tagline: "EHS Compliance Automation",
     description:
@@ -22,6 +23,7 @@ const companies = [
   },
   {
     id: "west",
+    color: "#00717b",
     name: "West Industries Corp.",
     tagline: "Field Services, Greater Houston",
     description:
@@ -38,6 +40,7 @@ const companies = [
   },
   {
     id: "zygur",
+    color: "#68E4AE",
     name: "Zygur Technologies Corp.",
     tagline: "Technology Research",
     description:
@@ -55,9 +58,9 @@ const companies = [
 ]
 
 const divisions = [
-  { id: "wlc", name: "West Land Clearing", tagline: "Land clearing, forestry mulching, site prep", url: "https://westlandclearing.com", domain: "westlandclearing.com" },
-  { id: "wc",  name: "West Construction",  tagline: "Excavation, grading, drainage",               url: "https://west.construction",    domain: "west.construction"    },
-  { id: "ww",  name: "West Weld",          tagline: "Mobile welding, fabrication, repair",          url: "https://westweld.co",          domain: "westweld.co"          },
+  { id: "wlc", color: "#0ead69", name: "West Land Clearing", tagline: "Land clearing, forestry mulching, site prep", url: "https://westlandclearing.com", domain: "westlandclearing.com" },
+  { id: "wc",  color: "#f95738", name: "West Construction",  tagline: "Excavation, grading, drainage",               url: "https://west.construction",    domain: "west.construction"    },
+  { id: "ww",  color: "#4361ee", name: "West Weld",          tagline: "Mobile welding, fabrication, repair",          url: "https://westweld.co",          domain: "westweld.co"          },
 ]
 
 // Virtual coordinate space
@@ -436,12 +439,8 @@ export default function Portfolio() {
                   rel="noopener noreferrer"
                   onMouseEnter={() => setActiveCompany(company.id)}
                   onMouseLeave={() => setActiveCompany(null)}
-                  className={[
-                    "flex flex-col gap-2 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline overflow-hidden",
-                    activeCompany === company.id
-                      ? "border-muted-foreground/50"
-                      : "border-border hover:border-muted-foreground/50",
-                  ].join(" ")}
+                  className="flex flex-col gap-2 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline overflow-hidden"
+                  style={{ borderColor: company.color }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -507,7 +506,8 @@ export default function Portfolio() {
                   href={div.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col gap-1.5 w-full h-full border border-border rounded-lg p-4 bg-background hover:border-muted-foreground/50 transition-colors duration-300 no-underline overflow-hidden"
+                  className="flex flex-col gap-1.5 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline overflow-hidden"
+                  style={{ borderColor: div.color }}
                 >
                   <div className="text-xs font-medium text-foreground leading-tight">{div.name}</div>
                   <div className="text-xs text-muted-foreground">{div.domain}</div>
