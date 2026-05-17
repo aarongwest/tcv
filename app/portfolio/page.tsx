@@ -507,12 +507,18 @@ export default function Portfolio() {
                   href={div.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col gap-1.5 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline overflow-hidden"
+                  className="flex flex-col items-center gap-1.5 w-full h-full border rounded-lg p-4 bg-background transition-colors duration-300 no-underline overflow-hidden"
                   style={{ borderColor: div.color }}
                 >
-                  <div className="text-xs font-medium text-foreground leading-tight">{div.name}</div>
-                  <div className="text-xs text-muted-foreground">{div.domain}</div>
-                  <div className="text-[10px] text-muted-foreground/70 leading-relaxed mt-0.5">{div.tagline}</div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/west-logo.png"
+                    alt="West Industries"
+                    style={{ height: "26px", width: "100%", objectFit: "contain", objectPosition: "center", filter: !isDark ? "invert(1)" : "none" }}
+                  />
+                  <div className="text-xs font-medium text-foreground leading-tight text-center">{div.name}</div>
+                  <div className="text-xs text-muted-foreground text-center">{div.domain}</div>
+                  <div className="text-[10px] text-muted-foreground/70 leading-relaxed mt-0.5 text-center">{div.tagline}</div>
                 </a>
               </div>
             ))}
