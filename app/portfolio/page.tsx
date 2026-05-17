@@ -389,7 +389,7 @@ export default function Portfolio() {
                 height: pct(AARON_H, VH),
               }}
             >
-              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-2 p-4">
+              <div className="w-full h-full border rounded-lg bg-background flex flex-col items-center justify-center gap-2 p-4" style={{ borderColor: "#724cf9" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/aaron-west-logo.png"
@@ -478,7 +478,8 @@ export default function Portfolio() {
                 }}
               >
                 <div
-                  className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-4 cursor-default transition-colors duration-300 hover:border-muted-foreground/50"
+                  className="w-full h-full border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-4 cursor-default transition-colors duration-300"
+                  style={{ borderColor: company.color }}
                   onMouseEnter={() => setActiveAI(company.id)}
                   onMouseLeave={() => setActiveAI(null)}
                 >
