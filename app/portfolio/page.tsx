@@ -126,8 +126,10 @@ const DIV_BOTTOM = DIV_TOP + DIV_H                                 // 575
 const DIV_TRUNK_LEN = DIV_TOP - CO_BOTTOM                         // 60
 const DIV_BUS_LEN = DIV_SPACING                                    // 195
 const DIV_DROP_LEN = DIV_TOP - DIV_BUS_Y                          // 20
-const DIV_PERSON_TOP = DIV_BOTTOM + 20                             // 595
-const DIV_PEOPLE_CONNECTOR_LEN = 20
+const DIV_CONNECT_Y = DIV_BOTTOM + 40                              // 615 — bus level below divisions
+const DIV_CONNECT_LEN = DIV_CONNECT_Y - DIV_BOTTOM                // 40
+const DIV_PERSON_TOP = DIV_CONNECT_Y + 20                          // 635
+const DIV_PEOPLE_CONNECTOR_LEN = DIV_PERSON_TOP - DIV_CONNECT_Y   // 20
 
 function pct(v: number, total: number) {
   return `${(v / total) * 100}%`
@@ -339,27 +341,37 @@ export default function Portfolio() {
                   }}
                 />
               ))}
-              {/* West division people connectors — all three drop to a shared bus */}
+              {/* All three divisions drop to the shared horizontal bus */}
               {DIV_CXS.map((cx) => (
                 <line
                   key={`div-person-drop-${cx}`}
-                  x1={cx} y1={DIV_BOTTOM} x2={cx} y2={DIV_PERSON_TOP}
+                  x1={cx} y1={DIV_BOTTOM} x2={cx} y2={DIV_CONNECT_Y}
                   stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                   style={{
-                    strokeDasharray: DIV_PEOPLE_CONNECTOR_LEN,
-                    strokeDashoffset: phase >= 5 ? 0 : DIV_PEOPLE_CONNECTOR_LEN,
-                    transition: "stroke-dashoffset 0.2s ease-in-out 400ms",
+                    strokeDasharray: DIV_CONNECT_LEN,
+                    strokeDashoffset: phase >= 5 ? 0 : DIV_CONNECT_LEN,
+                    transition: "stroke-dashoffset 0.3s ease-in-out 400ms",
                   }}
                 />
               ))}
-              {/* Horizontal bus at DIV_PERSON_TOP connecting all three division drops */}
+              {/* Horizontal bus at DIV_CONNECT_Y */}
               <line
-                x1={DIV_CXS[0]} y1={DIV_PERSON_TOP} x2={DIV_CXS[2]} y2={DIV_PERSON_TOP}
+                x1={DIV_CXS[0]} y1={DIV_CONNECT_Y} x2={DIV_CXS[2]} y2={DIV_CONNECT_Y}
                 stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                 style={{
                   strokeDasharray: DIV_CXS[2] - DIV_CXS[0],
                   strokeDashoffset: phase >= 5 ? 0 : DIV_CXS[2] - DIV_CXS[0],
                   transition: "stroke-dashoffset 0.4s ease-in-out 450ms",
+                }}
+              />
+              {/* Center drop from bus down to people */}
+              <line
+                x1={WEST_CX} y1={DIV_CONNECT_Y} x2={WEST_CX} y2={DIV_PERSON_TOP}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                style={{
+                  strokeDasharray: DIV_PEOPLE_CONNECTOR_LEN,
+                  strokeDashoffset: phase >= 5 ? 0 : DIV_PEOPLE_CONNECTOR_LEN,
+                  transition: "stroke-dashoffset 0.2s ease-in-out 550ms",
                 }}
               />
             </svg>
