@@ -413,7 +413,7 @@ export default function Portfolio() {
                 height: pct(COLLIS_H, VH),
               }}
             >
-              <div className="w-full h-full border border-border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-4">
+              <div className="w-full h-full border rounded-lg bg-background flex flex-col items-center justify-center gap-1 p-4" style={{ borderColor: "#724cf9" }}>
                 <div className="text-xs font-medium text-foreground">Collis AI</div>
                 <div className="text-xs text-muted-foreground text-center leading-tight">Co-Owner</div>
               </div>
