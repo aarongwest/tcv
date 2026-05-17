@@ -25,6 +25,7 @@ const companies = [
     id: "west",
     color: "#00717b",
     name: "West Industries Corp.",
+    dba: "a Zygur Dba",
     tagline: "Field Services, Greater Houston",
     description:
       "Land clearing, site construction, and welding repair across Greater Houston. Three service brands: West Land Clearing, West Construction, and West Weld.",
@@ -456,6 +457,7 @@ export default function Portfolio() {
                   />
                   <div>
                     <div className="text-xs font-medium text-foreground leading-tight">{company.name}</div>
+                    {"dba" in company && <div className="text-[10px] text-muted-foreground/60 leading-tight">{String((company as any).dba)}</div>}
                     <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{company.domain}</div>
                     <div className="text-[10px] text-muted-foreground/70 mt-1.5 leading-relaxed">{company.tagline}</div>
                   </div>
