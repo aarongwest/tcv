@@ -339,14 +339,27 @@ export default function Portfolio() {
                   }}
                 />
               ))}
-              {/* West division people connector (center column drops to shared people) */}
+              {/* West division people connectors — all three drop to a shared bus */}
+              {DIV_CXS.map((cx) => (
+                <line
+                  key={`div-person-drop-${cx}`}
+                  x1={cx} y1={DIV_BOTTOM} x2={cx} y2={DIV_PERSON_TOP}
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
+                  style={{
+                    strokeDasharray: DIV_PEOPLE_CONNECTOR_LEN,
+                    strokeDashoffset: phase >= 5 ? 0 : DIV_PEOPLE_CONNECTOR_LEN,
+                    transition: "stroke-dashoffset 0.2s ease-in-out 400ms",
+                  }}
+                />
+              ))}
+              {/* Horizontal bus at DIV_PERSON_TOP connecting all three division drops */}
               <line
-                x1={WEST_CX} y1={DIV_BOTTOM} x2={WEST_CX} y2={DIV_PERSON_TOP}
+                x1={DIV_CXS[0]} y1={DIV_PERSON_TOP} x2={DIV_CXS[2]} y2={DIV_PERSON_TOP}
                 stroke="hsl(var(--muted-foreground))" strokeWidth="1.5"
                 style={{
-                  strokeDasharray: DIV_PEOPLE_CONNECTOR_LEN,
-                  strokeDashoffset: phase >= 5 ? 0 : DIV_PEOPLE_CONNECTOR_LEN,
-                  transition: "stroke-dashoffset 0.2s ease-in-out 400ms",
+                  strokeDasharray: DIV_CXS[2] - DIV_CXS[0],
+                  strokeDashoffset: phase >= 5 ? 0 : DIV_CXS[2] - DIV_CXS[0],
+                  transition: "stroke-dashoffset 0.4s ease-in-out 450ms",
                 }}
               />
             </svg>
