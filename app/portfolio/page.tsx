@@ -126,10 +126,10 @@ const DIV_BOTTOM = DIV_TOP + DIV_H                                 // 575
 const DIV_TRUNK_LEN = DIV_TOP - CO_BOTTOM                         // 60
 const DIV_BUS_LEN = DIV_SPACING                                    // 195
 const DIV_DROP_LEN = DIV_TOP - DIV_BUS_Y                          // 20
-const DIV_CONNECT_Y = DIV_BOTTOM + 40                              // 615 — bus level below divisions
-const DIV_CONNECT_LEN = DIV_CONNECT_Y - DIV_BOTTOM                // 40
-const DIV_PERSON_TOP = DIV_CONNECT_Y + 20                          // 635
-const DIV_PEOPLE_CONNECTOR_LEN = DIV_PERSON_TOP - DIV_CONNECT_Y   // 20
+const DIV_CONNECT_Y = DIV_BOTTOM + 20                              // 595 — bus level, close to card bottoms
+const DIV_CONNECT_LEN = DIV_CONNECT_Y - DIV_BOTTOM                // 20
+const DIV_PERSON_TOP = DIV_CONNECT_Y + 45                          // 640
+const DIV_PEOPLE_CONNECTOR_LEN = DIV_PERSON_TOP - DIV_CONNECT_Y   // 45
 
 function pct(v: number, total: number) {
   return `${(v / total) * 100}%`
