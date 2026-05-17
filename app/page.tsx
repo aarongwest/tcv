@@ -161,7 +161,8 @@ export default function Home() {
                 href="https://ehs.inc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
+                className="block p-3 border rounded-lg transition-colors duration-300"
+                style={{ borderColor: "#e9ff70" }}
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
@@ -188,7 +189,8 @@ export default function Home() {
                 href="https://west.industries"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
+                className="block p-3 border rounded-lg transition-colors duration-300"
+                style={{ borderColor: "#00717b" }}
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
@@ -215,7 +217,8 @@ export default function Home() {
                 href="https://zygur.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
+                className="block p-3 border rounded-lg transition-colors duration-300"
+                style={{ borderColor: "#68E4AE" }}
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
