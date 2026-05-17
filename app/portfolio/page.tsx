@@ -67,7 +67,7 @@ const divisions = [
 // Aaron CX=650 aligns with West (650) → main vertical is a clean straight drop.
 // AI nodes sit to the right of each company card at the same y-level.
 const VW = 1300
-const VH = 900
+const VH = 960
 
 const AARON_CX = 650
 const AARON_TOP = 20
@@ -122,7 +122,7 @@ const WEST_CX = companies[1].coCX                                  // 650
 const DIV_BUS_Y = CO_BOTTOM + 40                                   // 430
 const DIV_TOP = DIV_BUS_Y + 20                                     // 450
 const DIV_W = 165
-const DIV_H = 125
+const DIV_H = 155
 const DIV_SPACING = 195
 const DIV_CXS = [WEST_CX - DIV_SPACING, WEST_CX, WEST_CX + DIV_SPACING]
 const DIV_BOTTOM = DIV_TOP + DIV_H                                 // 575
