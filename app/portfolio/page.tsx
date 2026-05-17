@@ -60,7 +60,7 @@ const companies = [
 const divisions = [
   { id: "wlc", color: "#0ead69", name: "West Land Clearing", tagline: "Land clearing, forestry mulching, site prep", url: "https://westlandclearing.com", domain: "westlandclearing.com" },
   { id: "wc",  color: "#f95738", name: "West Construction",  tagline: "Excavation, grading, drainage",               url: "https://west.construction",    domain: "west.construction"    },
-  { id: "ww",  color: "#4361ee", name: "West Weld",          tagline: "Mobile welding, fabrication, repair",          url: "https://westweld.co",          domain: "westweld.co"          },
+  { id: "ww",  color: "#3a86ff", name: "West Weld",          tagline: "Mobile welding, fabrication, repair",          url: "https://westweld.co",          domain: "westweld.co"          },
 ]
 
 // Virtual coordinate space
