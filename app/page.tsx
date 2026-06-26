@@ -239,7 +239,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">Technology Research — AI Automation & Advanced Manufacturing</div>
+                <div className="text-xs text-muted-foreground mt-1">Technology Research</div>
               </Link>
             </div>
           </div>
