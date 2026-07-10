@@ -73,9 +73,9 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">Founder & Owner</div>
+                <div className="text-foreground font-medium text-sm">AI Developer & Founder</div>
                 <div className="text-xs text-muted-foreground">
-                  Building companies across EHS compliance automation, field services, and technology research. 20 years in all three of these industries.
+                  Building AI-powered software across compliance automation, AEO tooling, and field services. 20+ years in EHS — now building the tools that run these programs without human overhead.
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">FOCUS AREAS</div>
               <div className="flex flex-wrap gap-2">
-                {["EHS Compliance", "Field Services", "Technology Research", "AI Automation", "Risk", "Safety Culture", "Big Data", "Operations", "Software", "GRC", "Sustainability"].map((skill) => (
+                {["AI Developer", "Compliance Automation", "Full-Stack", "EHS", "Safety AI", "AEO", "Risk", "GRC", "Operations", "Sustainability"].map((skill) => (
                   <span
                     key={skill}
                     className="px-2 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -239,7 +239,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">Technology Research</div>
+                <div className="text-xs text-muted-foreground mt-1">AEO Platform — AI Visibility Scoring</div>
               </Link>
             </div>
           </div>
@@ -248,7 +248,7 @@ export default function Home() {
           <div className="space-y-3">
             <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Founder and owner building across three companies: EHS compliance automation software, Greater Houston field services, and technology research. Background in risk and compliance, now applied to building tools and operations at scale.
+              AI developer and founder building software across three companies. 20+ years in EHS compliance — now building AI tools that run safety programs, score AI visibility, and manage field operations without human overhead.
             </p>
           </div>
         </div>

@@ -43,9 +43,9 @@ const companies = [
     id: "zygur",
     color: "#68E4AE",
     name: "Zygur Technologies Corp.",
-    tagline: "Technology Research",
+    tagline: "AEO Platform — AI Visibility",
     description:
-      "Technology research company focused on AI automation and advanced manufacturing.",
+      "AEO (Answer Engine Optimization) platform. Score, fix, and monitor any business's visibility to AI systems — ChatGPT, Claude, Perplexity, Gemini. Free score tool → paid plans to fix and monitor.",
     url: "https://zygur.com",
     domain: "zygur.com",
     logoDark: "/images/zygur-logo.png",
@@ -53,7 +53,7 @@ const companies = [
     invertOnDark: false,
     coCX: 1050,
     ai: "Hayli AI",
-    aiDescription: "Drives research and development at Zygur — tracking breakthroughs in AI automation and advanced manufacturing, synthesizing findings, and surfacing opportunities for new products.",
+    aiDescription: "Runs growth and product at Zygur — managing the AEO scoring pipeline, monitoring AI visibility across client domains, and surfacing opportunities for new platform features.",
     people: ["Aaron - Board Member", "Mary - Accounting", "Hayli - Sales", "Zed - Owner", "Greg - Operations"],
   },
 ]
