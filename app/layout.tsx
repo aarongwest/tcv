@@ -11,11 +11,11 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Aaron West — AI Developer",
-  description: "AI developer and founder building compliance automation, AEO tooling, and field service software. 20+ years of EHS domain expertise applied to AI products.",
+  title: "Aaron West — AI Developer & Workforce Maintainer",
+  description: "AI developer and workforce maintainer building compliance automation, AEO tooling, and field service software. 20+ years of EHS domain expertise applied to AI products.",
   keywords: ["AI developer", "AI developer Houston", "compliance automation", "EHS software", "safety AI", "AI founder"],
   openGraph: {
-    title: "Aaron West — AI Developer",
+    title: "Aaron West — AI Developer & Workforce Maintainer",
     description: "AI developer and founder building compliance automation, AEO tooling, and field service software.",
     url: "https://aaronwest.me",
     type: "profile",
@@ -38,7 +38,7 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Aaron West",
-            "jobTitle": "AI Developer",
+            "jobTitle": "AI Developer & Workforce Maintainer",
             "description": "AI developer and founder building compliance automation software, AEO tooling, and field service platforms. 20+ years of EHS expertise.",
             "url": "https://aaronwest.me",
             "sameAs": [

@@ -73,7 +73,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">AI Developer & Founder</div>
+                <div className="text-foreground font-medium text-sm">AI Developer & Workforce Maintainer</div>
                 <div className="text-xs text-muted-foreground">
                   Building AI-powered software across compliance automation, AEO tooling, and field services. 20+ years in EHS — now building the tools that run these programs without human overhead.
                 </div>
