@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aaron West — AI Developer & Workforce Maintainer",
     description: "AI developer and founder building compliance automation, AEO tooling, and field service software.",
-    url: "https://aaronwest.me",
+    url: "https://aaronwe.st",
     type: "profile",
   },
 }
@@ -40,7 +40,7 @@ export default function RootLayout({
             "name": "Aaron West",
             "jobTitle": "AI Developer & Workforce Maintainer",
             "description": "AI developer and founder building compliance automation software, AEO tooling, and field service platforms. 20+ years of EHS expertise.",
-            "url": "https://aaronwest.me",
+            "url": "https://aaronwe.st",
             "sameAs": [
               "https://www.linkedin.com/in/aarongwest/",
               "https://github.com/aarongwest"
