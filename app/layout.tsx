@@ -30,7 +30,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}> 
       <body className="font-sans antialiased">
-        <Script src="//js-na1.hs-scripts.com/46520416.js" strategy="afterInteractive" id="hs-script-loader" />
         <Script src="https://zygur.com/z/46952cf7-c433-45e1-af2f-f9cf14c9ca81" strategy="afterInteractive" id="zygur-pixel" />
         <script
           type="application/ld+json"
