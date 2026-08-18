@@ -19,7 +19,7 @@ const companies = [
     coCX: 200,
     ai: "Gerty AI",
     aiDescription: "Automates EHS compliance programs — training schedules, inspection tracking, incident reporting, and regulatory reminders. Runs autonomously so clients stay compliant without manual effort.",
-    people: ["Aaron - Chairman", "Mary - Accounting", "Khristyn - COO", "Isaac - Sales", "Bambi - Marketing", "Collis AI - GTM Engineer"],
+    people: ["Aaron - Chairman", "Mary - Accounting", "Khristyn - COO", "Collis AI - GTM Engineer"],
   },
   {
     id: "west",
@@ -37,7 +37,7 @@ const companies = [
     coCX: 650,
     ai: "Kasey AI",
     aiDescription: "Manages field operations for West Industries Corp. — job scheduling, crew dispatch, client follow-up, and service coordination across land clearing, construction, and welding.",
-    people: ["Aaron - Operations", "Mary - Accounting", "Zed - Owner", "Scott - Sales", "Kathy - Dispatch", "Greg - Support"],
+    people: ["Aaron - Operations", "Mary - Accounting"],
   },
   {
     id: "zygur",
@@ -54,7 +54,7 @@ const companies = [
     coCX: 1050,
     ai: "Hayli AI",
     aiDescription: "Runs growth and product at Zygur — managing the AEO scoring pipeline, monitoring AI visibility across client domains, and surfacing opportunities for new platform features.",
-    people: ["Aaron - Board Member", "Mary - Accounting", "Hayli - Sales", "Zed - Owner", "Greg - Operations"],
+    people: ["Aaron - Board Member", "Mary - Accounting", "Hayli - Sales"],
   },
 ]
 
