@@ -19,7 +19,7 @@ const companies = [
     coCX: 200,
     ai: "Gerty AI",
     aiDescription: "Automates EHS compliance programs — training schedules, inspection tracking, incident reporting, and regulatory reminders. Runs autonomously so clients stay compliant without manual effort.",
-    people: ["Aaron - Chairman", "Mary - Accounting", "Khristyn - Operations", "Isaac - Sales", "Bambi - Marketing"],
+    people: ["Aaron - Chairman", "Mary - Accounting", "Khristyn - COO", "Isaac - Sales", "Bambi - Marketing", "Collis AI - GTM Engineer"],
   },
   {
     id: "west",
