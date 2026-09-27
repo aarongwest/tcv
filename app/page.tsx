@@ -18,24 +18,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
       <main className="w-full max-w-5xl">
-        {/* Nav */}
-        <div className="flex items-center justify-end mb-6">
-          <Link
-            href="/portfolio"
-            className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 text-xs font-mono"
-          >
-            <span>PORTFOLIO</span>
-            <svg
-              className="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-
         {/* Header Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* Left: Name, Role and Photo */}
@@ -73,9 +55,9 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">AI Developer & Workforce Maintainer</div>
+                <div className="text-foreground font-medium text-sm">Founder / Principal, Kiowa Systems Corp.</div>
                 <div className="text-xs text-muted-foreground">
-                  Building AI-powered software across compliance automation, AEO tooling, and field services. 20+ years in EHS — now building the tools that run these programs without human overhead.
+                  20+ years in EHS and compliance. Building the platform and running the programs that keep regulated companies audit-ready.
                 </div>
               </div>
             </div>
@@ -83,7 +65,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">FOCUS AREAS</div>
               <div className="flex flex-wrap gap-2">
-                {["AI Developer", "Compliance Automation", "Full-Stack", "EHS", "Safety AI", "AEO", "Risk", "GRC", "Operations", "Sustainability"].map((skill) => (
+                {["Compliance Automation", "Full-Stack", "EHS", "Safety AI", "Risk", "GRC", "Operations", "Sustainability"].map((skill) => (
                   <span
                     key={skill}
                     className="px-2 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -142,7 +124,7 @@ export default function Home() {
             <div className="text-xs text-muted-foreground font-mono">WORKS</div>
             <div className="space-y-2">
               <Link
-                href="https://ehs.inc"
+                href="https://kiowa.sh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block p-3 border rounded-lg transition-colors duration-300"
@@ -150,8 +132,8 @@ export default function Home() {
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">EHS, Inc.</div>
-                    <div className="text-xs text-muted-foreground/70">ehs.inc</div>
+                    <div className="text-sm font-medium text-foreground">Kiowa Systems Corp. (FKA EHS, Inc.)</div>
+                    <div className="text-xs text-muted-foreground/70">kiowa.sh</div>
                   </div>
                   <svg
                     className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
@@ -167,63 +149,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">Environmental Health & Safety Solutions</div>
-              </Link>
-                <Link
-                href="https://west.industries"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-3 border rounded-lg transition-colors duration-300"
-                style={{ borderColor: "#00717b" }}
-              >
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">West Industries Corp.</div>
-                    <div className="text-xs text-muted-foreground/70">west.industries</div>
-                  </div>
-                  <svg
-                    className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6v12h12v-6m0-4l4.586-4.586a2 2 0 012.828 0l-2.828 2.828H18v6h-6v-6z"
-                    />
-                  </svg>
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">Field Services, Greater Houston</div>
-              </Link>
-              <Link
-                href="https://zygur.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-3 border rounded-lg transition-colors duration-300"
-                style={{ borderColor: "#68E4AE" }}
-              >
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">Zygur Technologies Corp.</div>
-                    <div className="text-xs text-muted-foreground/70">zygur.com</div>
-                  </div>
-                  <svg
-                    className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6v12h12v-6m0-4l4.586-4.586a2 2 0 012.828 0l-2.828 2.828H18v6h-6v-6z"
-                    />
-                  </svg>
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">AEO Platform — AI Visibility Scoring</div>
+                <div className="text-xs text-muted-foreground mt-1">Automatic paper trail for regulated companies</div>
               </Link>
             </div>
           </div>
@@ -232,7 +158,7 @@ export default function Home() {
           <div className="space-y-3">
             <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              AI developer and founder building software across three companies. 20+ years in EHS compliance — now building AI tools that run safety programs, score AI visibility, and manage field operations without human overhead.
+              Founder of Kiowa Systems Corp. 20+ years in EHS and compliance — building the platform and standing up the programs that keep regulated companies out of legal and regulatory trouble.
             </p>
           </div>
         </div>
