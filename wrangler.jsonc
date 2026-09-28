@@ -1,0 +1,15 @@
+{
+  "name": "tcv",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "aaronwe.st", "custom_domain": true },
+    { "pattern": "www.aaronwe.st", "custom_domain": true }
+  ]
+}

@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist } from "next/font/google"
-import Script from "next/script"
 import "./globals.css"
 
 const geist = Geist({
@@ -11,12 +10,12 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Aaron West — AI Developer & Workforce Maintainer",
-  description: "AI developer and workforce maintainer building compliance automation, AEO tooling, and field service software. 20+ years of EHS domain expertise applied to AI products.",
-  keywords: ["AI developer", "AI developer Houston", "compliance automation", "EHS software", "safety AI", "AI founder"],
+  title: "Aaron West — Founder, Kiowa Systems Corp.",
+  description: "20+ years in EHS and compliance. Founder of Kiowa Systems Corp., building the platform and running the programs that keep regulated companies audit-ready.",
+  keywords: ["EHS compliance", "compliance automation", "safety consulting", "Kiowa Systems", "GRC"],
   openGraph: {
-    title: "Aaron West — AI Developer & Workforce Maintainer",
-    description: "AI developer and founder building compliance automation, AEO tooling, and field service software.",
+    title: "Aaron West — Founder, Kiowa Systems Corp.",
+    description: "20+ years in EHS and compliance. Founder of Kiowa Systems Corp., building the platform and running the programs that keep regulated companies audit-ready.",
     url: "https://aaronwe.st",
     type: "profile",
   },
@@ -30,26 +29,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}> 
       <body className="font-sans antialiased">
-        <Script src="https://zygur.com/z/46952cf7-c433-45e1-af2f-f9cf14c9ca81" strategy="afterInteractive" id="zygur-pixel" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Aaron West",
-            "jobTitle": "AI Developer & Workforce Maintainer",
-            "description": "AI developer and founder building compliance automation software, AEO tooling, and field service platforms. 20+ years of EHS expertise.",
+            "jobTitle": "Founder, Kiowa Systems Corp.",
+            "description": "20+ years in EHS and compliance. Founder of Kiowa Systems Corp., building the platform and running the programs that keep regulated companies audit-ready.",
             "url": "https://aaronwe.st",
             "sameAs": [
               "https://www.linkedin.com/in/aarongwest/",
               "https://github.com/aarongwest"
             ],
             "address": { "@type": "PostalAddress", "addressRegion": "TX", "addressCountry": "US" },
-            "knowsAbout": ["AI development", "compliance automation", "EHS software", "safety AI", "full-stack development", "AEO"],
+            "knowsAbout": ["compliance automation", "EHS software", "safety AI", "full-stack development"],
             "worksFor": [
-              { "@type": "Organization", "name": "EHS, Inc.", "url": "https://ehs.inc" },
-              { "@type": "Organization", "name": "Zygur Technologies Corp.", "url": "https://zygur.com" },
-              { "@type": "Organization", "name": "West Industries Corp.", "url": "https://west.industries" }
+              { "@type": "Organization", "name": "Kiowa Systems Corp.", "url": "https://kiowa.sh" }
             ]
           }) }}
         />
