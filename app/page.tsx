@@ -55,9 +55,9 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">Founder / Principal, Kiowa Systems Corp.</div>
+                <div className="text-foreground font-medium text-sm">Industrial Safety &amp; Critical Infrastructure Operations</div>
                 <div className="text-xs text-muted-foreground">
-                  20+ years in EHS and compliance. Building the platform and running the programs that keep regulated companies audit-ready.
+                  20+ years keeping industrial and critical infrastructure operations safe, compliant, and running.
                 </div>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">FOCUS AREAS</div>
               <div className="flex flex-wrap gap-2">
-                {["Compliance Automation", "Full-Stack", "EHS", "Safety AI", "Risk", "GRC", "Operations", "Sustainability"].map((skill) => (
+                {["EHS", "Industrial Operations", "Critical Infrastructure", "Data Centers", "Full-Stack", "Risk", "GRC", "Facilities Ops"].map((skill) => (
                   <span
                     key={skill}
                     className="px-2 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -119,46 +119,11 @@ export default function Home() {
 
         {/* Content Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
-          {/* Works */}
-          <div className="space-y-3">
-            <div className="text-xs text-muted-foreground font-mono">WORKS</div>
-            <div className="space-y-2">
-              <Link
-                href="https://kiowa.sh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-3 border rounded-lg transition-colors duration-300"
-                style={{ borderColor: "#e9ff70" }}
-              >
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1 flex-1">
-                    <div className="text-sm font-medium text-foreground">Kiowa Systems Corp. (FKA EHS, Inc.)</div>
-                    <div className="text-xs text-muted-foreground/70">kiowa.sh</div>
-                  </div>
-                  <svg
-                    className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 ml-2 mt-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6v12h12v-6m0-4l4.586-4.586a2 2 0 012.828 0l-2.828 2.828H18v6h-6v-6z"
-                    />
-                  </svg>
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">Automatic paper trail for regulated companies</div>
-              </Link>
-            </div>
-          </div>
-
           {/* About */}
-          <div className="space-y-3">
+          <div className="space-y-3 md:col-span-2">
             <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Founder of Kiowa Systems Corp. 20+ years in EHS and compliance — building the platform and standing up the programs that keep regulated companies out of legal and regulatory trouble.
+              20+ years in EHS and industrial operations — standing up the safety and compliance programs that keep industrial sites, manufacturing facilities, and data centers running without legal or regulatory trouble.
             </p>
           </div>
         </div>
