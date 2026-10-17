@@ -4,6 +4,37 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 
+const story = [
+  {
+    q: "Who am I?",
+    a: "I am a 20+ year EHS/HSE veteran who has been building safety software since 2013. I currently work at Giga Energy as a full-time HSE Manager, and my wife and daughter run my EHS company full time.",
+  },
+  {
+    q: "Where did I start?",
+    a: "I started out in the workers' comp insurance risk and safety field and worked with all kinds of companies across diverse industries such as construction, mining, manufacturing, and industrial services. I worked as a consultant and as a direct hire at various times throughout my career.",
+  },
+  {
+    q: "What do I believe?",
+    a: "I believe that EHS/HSE/SHE/Safety professionals' lives can be drastically improved by AI and software automation. It can help them focus more on doing what they are good at and less on the things they hate. I also believe that AI and automation can increase cost efficiency while improving the life safety of its most valuable assets, the people, at the same time. Yes, technology can be dangerous. Throughout history people have used it for good AND bad. That will never change. I want to be the guy who uses it for good.",
+  },
+  {
+    q: "Who am I doing this for?",
+    a: "I am doing this for God, safety professionals, their employers, my family, and myself. Safety professionals and employers have become bogged down by workforce digitization, and today's enterprise EHS/HSE/Safety software has become bloated and time consuming to manage. This makes the job much worse than it needs to be. My family and I get enjoyment out of the work in this field because it helps people overcome difficult problems and they love us for it. That's very satisfying for us. My family works in the business with me, my wife and daughter, and hopefully one day my young son.",
+  },
+  {
+    q: "Why me?",
+    a: "20 years of experience gives you a huge lever over newcomers to the industry. Not only have I learned many cheat codes personally, but I've had the old school safety pros from the 80s and 90s pass down industry knowledge to me that I have found to be the most powerful yet but not mentioned at all online or in larger safety discussions. These pros come from places like DuPont, Ingersoll Rand, and L3 Communications. I have also worked inside some big tech companies such as Meta, where I learned more about the software and automation side of things. I combine the old school philosophies, principles, strategies and tactics with the tech company's tech-first approach to safety. Anyone who works with me not only benefits from all this, but they have fun too, because I always remember to smile and enjoy the journey.",
+  },
+  {
+    q: "Where am I going?",
+    a: "I am going to attempt to spend my lasting years building the last EHS/HSE/Safety technology. This tech will be an AI that can automate everything the safety professional hates doing, so he or she can spend more time doing what AI cannot: talking face to face with people. My vision is that every safety pro will wake up and look forward to going in to the site. They will enjoy their time at work because they get to decide what AI and automation does, so they can focus on what they enjoy doing every day. The final destination is safety pros love going in to work each day, and the dumb stuff happens automatically in the background without their knowledge.",
+  },
+  {
+    q: "What's the payoff?",
+    a: "Gerty becomes the go-to EHS/HSE/Safety technology. A community of practitioners surfaces because people become excited about EHS/HSE/Safety again, because they can make the profession about what they want it to be about.",
+  },
+]
+
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
 
@@ -43,8 +74,8 @@ export default function Home() {
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                Available for Consulting
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                Available for Consulting (unavailable)
               </div>
               <div>Texas - In Person, Worldwide - Virtual</div>
             </div>
@@ -126,6 +157,16 @@ export default function Home() {
               20+ years in EHS and industrial operations — standing up the safety and compliance programs that keep industrial sites, manufacturing facilities, and data centers running without legal or regulatory trouble.
             </p>
           </div>
+        </div>
+
+        {/* Story */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
+          {story.map((item) => (
+            <div key={item.q} className="space-y-3 md:col-span-2">
+              <div className="text-xs text-muted-foreground font-mono">{item.q.toUpperCase()}</div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{item.a}</p>
+            </div>
+          ))}
         </div>
 
         {/* Footer */}
