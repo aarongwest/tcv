@@ -7,45 +7,60 @@ import { useState, useEffect } from "react"
 const story = [
   {
     q: "Who am I?",
-    a: "I am a 20+ year EHS/HSE veteran who has been building safety software since 2013. I currently work at Giga Energy as a full-time HSE Manager, and my wife and daughter run my EHS company full time.",
+    a: "I'm a 20+ year EHS/HSE veteran who has been building safety software since 2013. I work full time as an HSE Manager at Giga Energy, and my wife and daughter run our EHS company full time.",
   },
   {
     q: "Where did I start?",
-    a: "I started out in the workers' comp insurance risk and safety field and worked with all kinds of companies across diverse industries such as construction, mining, manufacturing, and industrial services. I worked as a consultant and as a direct hire at various times throughout my career.",
+    a: "Workers' comp insurance risk and safety. From there I worked as a consultant and a direct hire across construction, mining, manufacturing, and industrial services -- enough industries to see the same problems show up in different clothes.",
   },
   {
     q: "What do I believe?",
-    a: "I believe that EHS/HSE/SHE/Safety professionals' lives can be drastically improved by AI and software automation. It can help them focus more on doing what they are good at and less on the things they hate. I also believe that AI and automation can increase cost efficiency while improving the life safety of its most valuable assets, the people, at the same time. Yes, technology can be dangerous. Throughout history people have used it for good AND bad. That will never change. I want to be the guy who uses it for good.",
+    a: "That AI and software automation can drastically improve the lives of EHS/HSE/SHE/safety professionals -- taking the work they hate off their plates so they can spend their time on what they're good at. Done right, it cuts cost and improves life safety for the people on site at the same time. Technology can be dangerous, and people have always used it for good and for bad. I want to be one of the ones who uses it for good.",
   },
   {
     q: "Who am I doing this for?",
-    a: "I am doing this for God, safety professionals, their employers, my family, and myself. Safety professionals and employers have become bogged down by workforce digitization, and today's enterprise EHS/HSE/Safety software has become bloated and time consuming to manage. Gerty is going to solve this problem better than anyone or anything else. This makes the job much worse than it needs to be. My family and I get enjoyment out of the work in this field because it helps people overcome difficult problems and they love us for it. That's very satisfying for us. My family works in the business with me, my wife and daughter, and hopefully one day my young son.",
+    a: "God, safety professionals, their employers, my family, and myself. Safety professionals and their employers have been bogged down by workforce digitization, and enterprise EHS/HSE/safety software has become bloated and time consuming to manage. It makes a job people care about worse than it needs to be. Gerty is going to solve this problem better than anyone or anything else. My family and I get real satisfaction from this work because it helps people get past hard problems, and they love us for it. My wife and daughter work in the business with me, and hopefully one day my young son will too.",
   },
   {
     q: "Why me?",
-    a: "20 years of experience gives you a huge lever over newcomers to the industry. Not only have I learned many cheat codes personally, but I've had the old school safety pros from the 80s and 90s pass down industry knowledge to me that I have found to be the most powerful yet but not mentioned at all online or in larger safety discussions. These pros come from places like DuPont, Ingersoll Rand, and L3 Communications. I have also worked inside some big tech companies such as Meta, where I learned more about the software and automation side of things. I combine the old school philosophies, principles, strategies and tactics with the tech company's tech-first approach to safety. Anyone who works with me not only benefits from all this, but they have fun too, because I always remember to smile and enjoy the journey.",
+    a: "Twenty years is a real lever over someone new to the industry. I've picked up plenty of cheat codes personally, and the old school safety pros from the 80s and 90s passed down knowledge to me that I've found to be the most powerful of all -- and it isn't mentioned anywhere online or in the larger safety discussions. Those pros came from places like DuPont, Ingersoll Rand, and L3 Communications. I've also worked inside big tech, including Meta, where I learned the software and automation side. I combine old school philosophies, principles, strategies, and tactics with a tech company's tech-first approach to safety. Anyone who works with me gets all of it, and we have fun doing it, because I always remember to smile and enjoy the journey.",
   },
   {
     q: "Where am I going?",
-    a: "I am going to attempt to spend my lasting years building the last EHS/HSE/Safety technology. This tech will be an AI that can automate everything the safety professional hates doing, so he or she can spend more time doing what AI cannot: talking face to face with people. My vision is that every safety pro will wake up and look forward to going in to the site. They will enjoy their time at work because they get to decide what AI and automation does, so they can focus on what they enjoy doing every day. The final destination is safety pros love going in to work each day, and the dumb stuff happens automatically in the background without their knowledge.",
+    a: "I'm going to spend my lasting years building the last EHS/HSE/safety technology. It will be an AI that automates everything the safety professional hates doing, so he or she can spend more time on what AI can't do: talking face to face with people. My vision is a safety pro who wakes up looking forward to going to site, decides what the automation does, and gets to focus on the part of the job they actually enjoy. The dumb stuff happens in the background without them ever thinking about it.",
   },
   {
     q: "What's the payoff?",
-    a: "Gerty becomes the go-to EHS/HSE/Safety technology. A community of practitioners surfaces because people become excited about EHS/HSE/Safety again, because they can make the profession about what they want it to be about.",
+    a: "Gerty becomes the go-to EHS/HSE/safety technology, and a community of practitioners surfaces around it -- people excited about safety again because they can finally make the profession about what they want it to be about.",
   },
 ]
 
 const endgame = [
-  "The end: Gerty runs your system and automates what you hate so you never have to type or look at a computer screen again. It's a voice assistant with text options from a mobile or wearable device.",
-  "Belief 1: Typing is slow and outdated.",
-  "Belief 2: Voice is the most natural way to work.",
-  "Belief 3: You'll be more productive by using Gerty.",
+  "Gerty runs your system and automates what you hate, so you never have to type or look at a computer screen again. It's a voice assistant, with text options, on a phone or a wearable.",
+  "Typing is slow and outdated.",
+  "Voice is the most natural way to work.",
+  "You'll be more productive with Gerty.",
 ]
 
 const projects = [
-  { name: "Gerty", url: "gerty.ai", role: "Primary" },
-  { name: "Jevor", url: "jevor.ai", role: "Supporting" },
-  { name: "SOG", url: "sog.dev", role: "Supporting" },
+  {
+    name: "Gerty",
+    url: "gerty.ai",
+    role: "Primary",
+    desc: "The last EHS/HSE/safety technology. Takes the work safety pros hate off their plates.",
+  },
+  {
+    name: "Jevor",
+    url: "jevor.ai",
+    role: "Supporting",
+    desc: "An AI engineer that builds and maintains software. It's how Gerty gets built without a staff I can't hire.",
+  },
+  {
+    name: "Safe Operations Gateway",
+    url: "sog.dev",
+    role: "Supporting",
+    desc: "The front door that connects Gerty to the systems a company already runs on.",
+  },
 ]
 
 export default function Home() {
@@ -176,21 +191,26 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           <div className="space-y-3 md:col-span-2">
             <div className="text-xs text-muted-foreground font-mono">PROJECTS</div>
-            <div className="space-y-1">
+            <div className="space-y-3">
               {projects.map((p) => (
                 <Link
                   key={p.name}
                   href={`https://${p.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-baseline justify-between gap-4 text-sm py-1 border-b border-border/50 text-foreground hover:text-muted-foreground transition-colors duration-300"
+                  className="block group border-b border-border/50 pb-3 hover:border-muted-foreground/50 transition-colors duration-300"
                 >
-                  <span>{p.name}</span>
-                  <span className="text-xs text-muted-foreground">{p.role}</span>
-                  <span className="text-xs font-mono text-muted-foreground">{p.url}</span>
+                  <div className="flex items-baseline justify-between gap-4 text-sm">
+                    <span className="text-foreground">{p.name}</span>
+                    <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">{p.role} · {p.url}</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1 leading-relaxed">{p.desc}</div>
                 </Link>
               ))}
             </div>
+            <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+              I need more than one project moving at a time. Jevor and the Gateway are how I do that instead of splitting myself in half: while one is waiting on a decision, a customer, or a slow build, the others keep going, and what I learn on one feeds the other two. Gerty stays the point of it all, and I stay on it every day.
+            </p>
           </div>
         </div>
 
