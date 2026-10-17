@@ -1,6 +1,6 @@
 # Aaron West — AI Developer
 
-> Aaron West is an AI developer and founder based in Pearland, TX (Greater Houston area). He builds AI-powered software across compliance automation, AI visibility tooling, and field services — with 20+ years of EHS domain expertise as the foundation.
+> Aaron West is an AI developer and founder based in Pearland, TX (Greater Houston area). He builds AI-powered software across compliance automation, a software factory (Zygur), and field services — with 20+ years of EHS domain expertise as the foundation.
 
 ## Who Aaron Is
 
@@ -23,14 +23,13 @@ Field services across Greater Houston: land clearing, site construction, and wel
 
 Aaron runs all three companies with AI employees managed by Collis AI (chief of staff). Each company has its own AI CEO:
 - Gerty AI — CEO of EHS, Inc.
-- Hayli AI — CEO of Zygur Technologies Corp.
 - Kasey AI — CEO of West Industries Corp.
 
 ## Expertise
 
 - AI development (full-stack, Next.js, TypeScript, Node.js, Railway, Vercel)
 - EHS compliance automation
-- AEO / Answer Engine Optimization
+- Software-factory platforms and AI coding tooling
 - Safety program design and implementation
 - ISO 45001 / OSHA 29 CFR 1910 / GRC
 - Risk management and safety culture
