@@ -261,7 +261,12 @@ export default function Home() {
 
         {/* Footer */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-4 border-t border-border">
-          <div className="text-xs text-muted-foreground">©Aaron West | ARR ;/</div>
+          <div className="text-xs text-muted-foreground">
+            ©Aaron West | ARR ;/ |{" "}
+            <a href="/llms.txt" className="underline hover:text-foreground">
+              llms.txt
+            </a>
+          </div>
           <button
             onClick={toggleTheme}
             className="group p-2 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
