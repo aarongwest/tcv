@@ -114,7 +114,7 @@ export default function Home() {
             <div className="space-y-3">
               <div className="text-xs text-muted-foreground font-mono">ROLE</div>
               <div className="space-y-1">
-                <div className="text-foreground font-medium text-sm">Industrial Safety &amp; Critical Infrastructure Operations + Legal &amp; Insurance Risk</div>
+                <div className="text-foreground font-medium text-sm">Industrial Safety &amp; Critical Infrastructure Operations + Insurance &amp; Legal Risk</div>
                 <div className="text-xs text-muted-foreground">
                   20+ years keeping industrial and critical infrastructure operations safe, compliant, and running.
                 </div>
