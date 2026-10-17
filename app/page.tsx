@@ -53,13 +53,13 @@ const projects = [
     name: "Jevor",
     url: "jevor.ai",
     role: "Supporting",
-    desc: "An AI engineer that builds and maintains software. It's how Gerty gets built without a staff I can't hire.",
+    desc: "A coding assistant that lives in your terminal. It picks the most cost-effective AI model for each task, so building software costs less.",
   },
   {
     name: "Safe Operations Gateway",
     url: "sog.dev",
     role: "Supporting",
-    desc: "The front door that connects Gerty to the systems a company already runs on.",
+    desc: "Supporting project. Details coming soon.",
   },
 ]
 
@@ -209,7 +209,7 @@ export default function Home() {
               ))}
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed pt-1">
-              I need more than one project moving at a time. Jevor and the Gateway are how I do that instead of splitting myself in half: while one is waiting on a decision, a customer, or a slow build, the others keep going, and what I learn on one feeds the other two. Gerty stays the point of it all, and I stay on it every day.
+              I need more than one project moving at a time. Jevor and SOG run alongside Gerty, so while one project is waiting on a decision or a build, the others keep moving. Gerty stays the point of it all.
             </p>
           </div>
         </div>
