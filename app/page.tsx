@@ -103,9 +103,8 @@ export default function Home() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                Available for Consulting (unavailable)
+                Unavailable for Consulting
               </div>
-              <div className="text-xs text-muted-foreground pl-4">Due to Giga Energy Infra Projects Commitment.</div>
               <div>Texas - In Person, Worldwide - Virtual</div>
             </div>
           </div>
