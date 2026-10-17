@@ -42,6 +42,12 @@ const endgame = [
   "Belief 3: You'll be more productive by using Gerty.",
 ]
 
+const projects = [
+  { name: "Gerty", url: "gerty.ai", role: "Primary" },
+  { name: "Jevor", url: "jevor.ai", role: "Supporting" },
+  { name: "SOG", url: "sog.dev", role: "Supporting" },
+]
+
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
 
@@ -163,6 +169,28 @@ export default function Home() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               20+ years in EHS and industrial operations — standing up the safety and compliance programs that keep industrial sites, manufacturing facilities, and data centers running without legal or regulatory trouble.
             </p>
+          </div>
+        </div>
+
+        {/* Projects */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
+          <div className="space-y-3 md:col-span-2">
+            <div className="text-xs text-muted-foreground font-mono">PROJECTS</div>
+            <div className="space-y-1">
+              {projects.map((p) => (
+                <Link
+                  key={p.name}
+                  href={`https://${p.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-baseline justify-between gap-4 text-sm py-1 border-b border-border/50 text-foreground hover:text-muted-foreground transition-colors duration-300"
+                >
+                  <span>{p.name}</span>
+                  <span className="text-xs text-muted-foreground">{p.role}</span>
+                  <span className="text-xs font-mono text-muted-foreground">{p.url}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
