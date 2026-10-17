@@ -85,6 +85,13 @@ const projects: { name: string; url: string; role: string; desc: string; shape: 
     desc: "A shared gate and sandbox runner for AI agent actions. The safe executable environment Gerty and Jevor Enterprise runs on.",
     shape: "cube",
   },
+  {
+    name: "OSHIFY",
+    url: "zygur.com",
+    role: "Concept",
+    desc: "Ontological Safety and Health Incident Factor Yield. A new kind of data layer that lets AI traverse huge amounts of safety and health incident data and return a factor yield, Y = (O + k) / (E + k): observed severity-weighted incidents with a factor, over the count expected from hours worked, smoothed. Software and AI use it to make decisions.",
+    shape: "octa",
+  },
 ]
 
 export default function Home() {

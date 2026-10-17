@@ -14,7 +14,7 @@ He is available for consulting engagements — in person (Texas) and worldwide v
 EHS compliance automation software powered by Gerty AI. Safety training delivery, inspection tracking, incident reporting, and regulatory compliance — fully automated. The AI generates and delivers content; humans never have to log in to manage it. Current services: LMS/safety training + ISNetworld and Avetta compliance management.
 
 ### Zygur Technologies Corp. — zygur.com
-A white-labelable software-factory platform that also ships independent programs. Its two projects are Gerty (customer-facing safety and industrial software) and Jevor (a coding assistant in your terminal that switches models mid-task to cut cost). Also runs the shared gate and sandbox for AI agent actions.
+A white-labelable software-factory platform that also ships independent programs. Its two projects are Gerty (customer-facing safety and industrial software) and Jevor (a coding assistant in your terminal that switches models mid-task to cut cost). Also runs the shared gate and sandbox for AI agent actions. In concept: OSHIFY (Ontological Safety and Health Incident Factor Yield), a new kind of data layer that lets AI traverse safety and health incident data and return a factor yield, Y = (O + k) / (E + k), for software and AI to use in decisions.
 
 ### West Industries Corp. — west.industries
 Field services across Greater Houston: land clearing, site construction, and welding repair. Three divisions: West Land Clearing (westlandclearing.com), West Construction (west.construction), West Weld (westweld.co).
