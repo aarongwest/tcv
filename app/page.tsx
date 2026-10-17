@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import AsciiShape, { type ShapeKind } from "@/components/ascii-shape"
 
 const story = [
   {
@@ -42,24 +43,27 @@ const endgame = [
   "You'll be more productive with Gerty.",
 ]
 
-const projects = [
+const projects: { name: string; url: string; role: string; desc: string; shape: ShapeKind }[] = [
   {
     name: "Gerty",
     url: "gerty.ai",
     role: "Primary",
     desc: "The last EHS/HSE/safety technology. Takes the work safety pros hate off their plates.",
+    shape: "dodeca",
   },
   {
     name: "Jevor",
     url: "jevor.ai",
     role: "Supporting",
     desc: "A coding assistant that lives in your terminal. It picks the most cost-effective AI model for each task, so building software costs less.",
+    shape: "ico",
   },
   {
     name: "Sandboxed Operations Gateway (SOG)",
     url: "sog.dev",
     role: "Supporting",
     desc: "Sandboxed Operations Gateway. A shared gate and sandbox runner for AI agent actions, supporting Gerty and Jevor.",
+    shape: "cube",
   },
 ]
 
@@ -75,8 +79,19 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
-      <main className="w-full max-w-5xl">
+    <div className="min-h-screen bg-background text-foreground px-4 py-10 sm:px-6">
+      <main className="mx-auto w-full max-w-3xl">
+        {/* Print */}
+        <button
+          onClick={() => window.print()}
+          className="print-hide mb-8 flex w-full items-center justify-center gap-3 rounded-lg border border-border bg-muted/40 px-6 py-4 font-mono text-sm uppercase tracking-[0.2em] text-foreground transition-colors duration-300 hover:border-muted-foreground/60 hover:bg-muted"
+        >
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5V4.5h10.5v3M6.75 7.5h10.5a3 3 0 013 3v6h-3.75m-9.75 0H3.75v-6a3 3 0 013-3m3.75 6h4.5m-4.5 3.75h4.5m-7.5-3.75h-.008v3.75h12.016v-3.75h-.008" />
+          </svg>
+          Print / Save as PDF
+        </button>
+
         {/* Header Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* Left: Name, Role and Photo */}
@@ -179,7 +194,7 @@ export default function Home() {
         {/* Content Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* About */}
-          <div className="space-y-3 md:col-span-2">
+          <div className="space-y-3 md:col-span-2 lg:col-span-3">
             <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               20+ years in EHS and industrial operations — standing up the safety and compliance programs that keep industrial sites, manufacturing facilities, and data centers running without legal or regulatory trouble.
@@ -189,7 +204,7 @@ export default function Home() {
 
         {/* Projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
-          <div className="space-y-3 md:col-span-2">
+          <div className="space-y-3 md:col-span-2 lg:col-span-3">
             <div className="text-xs text-muted-foreground font-mono">PROJECTS</div>
             <div className="space-y-3">
               {projects.map((p) => (
@@ -198,13 +213,23 @@ export default function Home() {
                   href={`https://${p.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group border-b border-border/50 pb-3 hover:border-muted-foreground/50 transition-colors duration-300"
+                  className="block group break-inside-avoid border-b border-border/50 pb-4 hover:border-muted-foreground/50 transition-colors duration-300"
                 >
-                  <div className="flex items-baseline justify-between gap-4 text-sm">
-                    <span className="text-foreground">{p.name}</span>
-                    <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">{p.role} · {p.url}</span>
+                  <div className="flex items-start gap-4">
+                    <AsciiShape
+                      kind={p.shape}
+                      cols={18}
+                      phase={p.name.length * 900}
+                      className="mt-0.5 shrink-0 text-[7px] text-muted-foreground/70 transition-colors duration-300 group-hover:text-muted-foreground"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-baseline justify-between gap-4 text-sm">
+                        <span className="text-foreground">{p.name}</span>
+                        <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">{p.role} · {p.url}</span>
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1 leading-relaxed">{p.desc}</div>
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1 leading-relaxed">{p.desc}</div>
                 </Link>
               ))}
             </div>
@@ -217,7 +242,7 @@ export default function Home() {
         {/* Story */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {story.map((item) => (
-            <div key={item.q} className="space-y-3 md:col-span-2">
+            <div key={item.q} className="space-y-3 md:col-span-2 lg:col-span-3">
               <div className="text-xs text-muted-foreground font-mono">{item.q.toUpperCase()}</div>
               <p className="text-sm text-muted-foreground leading-relaxed">{item.a}</p>
             </div>
@@ -226,7 +251,7 @@ export default function Home() {
 
         {/* Endgame */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
-          <div className="space-y-3 md:col-span-2">
+          <div className="space-y-3 md:col-span-2 lg:col-span-3">
             <div className="text-xs text-muted-foreground font-mono">REVERSE ENGINEERING THE ENDGAME</div>
             {endgame.map((line) => (
               <p key={line} className="text-sm text-muted-foreground leading-relaxed">{line}</p>
