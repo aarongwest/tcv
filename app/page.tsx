@@ -56,7 +56,7 @@ const projects = [
     desc: "A coding assistant that lives in your terminal. It picks the most cost-effective AI model for each task, so building software costs less.",
   },
   {
-    name: "Safe Operations Gateway",
+    name: "Safe Operations Gateway (SOG)",
     url: "sog.dev",
     role: "Supporting",
     desc: "Safe Operations Gateway. A shared gate and sandbox runner for AI agent actions, supporting Gerty and Jevor.",
