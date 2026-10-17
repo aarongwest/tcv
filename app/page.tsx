@@ -104,7 +104,7 @@ export default function Home() {
         {/* Print */}
         <button
           onClick={() => window.print()}
-          className="print-hide mb-8 flex w-full items-center justify-center gap-3 rounded-lg border border-border bg-muted/40 px-6 py-4 font-mono text-sm uppercase tracking-[0.2em] text-foreground transition-colors duration-300 hover:border-muted-foreground/60 hover:bg-muted"
+          className="print-hide flip-button mb-8 flex w-full items-center justify-center gap-3 rounded-lg border border-border bg-muted/40 px-6 py-4 font-mono text-sm uppercase tracking-[0.2em] text-foreground transition-colors duration-300 hover:border-foreground hover:bg-foreground hover:text-background"
         >
           <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5V4.5h10.5v3M6.75 7.5h10.5a3 3 0 013 3v6h-3.75m-9.75 0H3.75v-6a3 3 0 013-3m3.75 6h4.5m-4.5 3.75h4.5m-7.5-3.75h-.008v3.75h12.016v-3.75h-.008" />

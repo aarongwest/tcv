@@ -96,3 +96,18 @@ body {
     text-decoration: none !important;
   }
 }
+
+/* Print button: flips once every 3s */
+@keyframes flip-x {
+  0%, 75% { transform: perspective(700px) rotateX(0deg); }
+  100% { transform: perspective(700px) rotateX(360deg); }
+}
+.flip-button {
+  animation: flip-x 3s ease-in-out infinite;
+}
+.flip-button:hover {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip-button { animation: none; }
+}
