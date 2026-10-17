@@ -142,6 +142,32 @@ export default function Home() {
               </div>
               <div>Texas - In Person, Worldwide - Virtual</div>
             </div>
+            <div className="space-y-3">
+              <SectionHeading icon={Building2}>COMPANIES</SectionHeading>
+              <div className="space-y-3 text-sm">
+                <div className="space-y-1">
+                  <div className="text-foreground">
+                    EHS, Inc <span className="text-muted-foreground text-xs">(FKA OSHIFY Corporation)</span>
+                  </div>
+                  <div className="flex flex-wrap gap-3 text-xs">
+                    <a href="https://ehs.inc" target="_blank" rel="noopener noreferrer" className="underline hover:text-muted-foreground transition-colors duration-300">
+                      ehs.inc
+                    </a>
+                    <a href="https://oshify.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-muted-foreground transition-colors duration-300">
+                      oshify.com
+                    </a>
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-foreground">Zygur Technologies Corp.</div>
+                  <div className="flex flex-wrap gap-3 text-xs">
+                    <a href="https://zygur.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-muted-foreground transition-colors duration-300">
+                      zygur.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Center: Role and Focus */}
@@ -167,32 +193,6 @@ export default function Home() {
                     {skill}
                   </span>
                 ))}
-              </div>
-            </div>
-            <div className="space-y-3">
-              <SectionHeading icon={Building2}>COMPANIES</SectionHeading>
-              <div className="space-y-3 text-sm">
-                <div className="space-y-1">
-                  <div className="text-foreground">
-                    EHS, Inc <span className="text-muted-foreground text-xs">(FKA OSHIFY Corporation)</span>
-                  </div>
-                  <div className="flex flex-wrap gap-3 text-xs">
-                    <a href="https://ehs.inc" target="_blank" rel="noopener noreferrer" className="underline hover:text-muted-foreground transition-colors duration-300">
-                      ehs.inc
-                    </a>
-                    <a href="https://oshify.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-muted-foreground transition-colors duration-300">
-                      oshify.com
-                    </a>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-foreground">Zygur Technologies Corp.</div>
-                  <div className="flex flex-wrap gap-3 text-xs">
-                    <a href="https://zygur.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-muted-foreground transition-colors duration-300">
-                      zygur.com
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
