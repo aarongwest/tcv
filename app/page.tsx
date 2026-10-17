@@ -35,6 +35,13 @@ const story = [
   },
 ]
 
+const endgame = [
+  "The end: Gerty runs your system and automates what you hate so you never have to type or look at a computer screen again. It's a voice assistant with text options from a mobile or wearable device.",
+  "Belief 1: Typing is slow and outdated.",
+  "Belief 2: Voice is the most natural way to work.",
+  "Belief 3: You'll be more productive by using Gerty.",
+]
+
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
 
@@ -167,6 +174,16 @@ export default function Home() {
               <p className="text-sm text-muted-foreground leading-relaxed">{item.a}</p>
             </div>
           ))}
+        </div>
+
+        {/* Endgame */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
+          <div className="space-y-3 md:col-span-2">
+            <div className="text-xs text-muted-foreground font-mono">REVERSE ENGINEERING THE ENDGAME</div>
+            {endgame.map((line) => (
+              <p key={line} className="text-sm text-muted-foreground leading-relaxed">{line}</p>
+            ))}
+          </div>
         </div>
 
         {/* Footer */}
