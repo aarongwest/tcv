@@ -59,7 +59,7 @@ const projects = [
     name: "Safe Operations Gateway",
     url: "sog.dev",
     role: "Supporting",
-    desc: "Supporting project. Details coming soon.",
+    desc: "Safe Operations Gateway. A shared gate and sandbox runner for AI agent actions, supporting Gerty and Jevor.",
   },
 ]
 
