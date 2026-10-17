@@ -19,7 +19,7 @@ const story = [
   },
   {
     q: "Who am I doing this for?",
-    a: "I am doing this for God, safety professionals, their employers, my family, and myself. Safety professionals and employers have become bogged down by workforce digitization, and today's enterprise EHS/HSE/Safety software has become bloated and time consuming to manage. This makes the job much worse than it needs to be. My family and I get enjoyment out of the work in this field because it helps people overcome difficult problems and they love us for it. That's very satisfying for us. My family works in the business with me, my wife and daughter, and hopefully one day my young son.",
+    a: "I am doing this for God, safety professionals, their employers, my family, and myself. Safety professionals and employers have become bogged down by workforce digitization, and today's enterprise EHS/HSE/Safety software has become bloated and time consuming to manage. Gerty is going to solve this problem better than anyone or anything else. This makes the job much worse than it needs to be. My family and I get enjoyment out of the work in this field because it helps people overcome difficult problems and they love us for it. That's very satisfying for us. My family works in the business with me, my wife and daughter, and hopefully one day my young son.",
   },
   {
     q: "Why me?",
