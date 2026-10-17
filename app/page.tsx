@@ -4,6 +4,26 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import AsciiShape, { type ShapeKind } from "@/components/ascii-shape"
+import { User, Sprout, Lightbulb, Heart, Key, Compass, Trophy, HardHat, Boxes, Rocket, Briefcase, Target, Link2, type LucideIcon } from "lucide-react"
+
+const storyIcons: Record<string, LucideIcon> = {
+  "Who am I?": User,
+  "Where did I start?": Sprout,
+  "What do I believe?": Lightbulb,
+  "Who am I doing this for?": Heart,
+  "Why me?": Key,
+  "Where am I going?": Compass,
+  "What's the payoff?": Trophy,
+}
+
+function SectionHeading({ icon: Icon, children }: { icon: LucideIcon; children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
+      <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+      <span>{children}</span>
+    </div>
+  )
+}
 
 const story = [
   {
@@ -127,7 +147,7 @@ export default function Home() {
           {/* Center: Role and Focus */}
           <div className="space-y-6">
             <div className="space-y-3">
-              <div className="text-xs text-muted-foreground font-mono">ROLE</div>
+              <SectionHeading icon={Briefcase}>ROLE</SectionHeading>
               <div className="space-y-1">
                 <div className="text-foreground font-medium text-sm">Industrial Safety &amp; Critical Infrastructure Operations + Insurance &amp; Legal Risk</div>
                 <div className="text-xs text-muted-foreground">
@@ -137,7 +157,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-3">
-              <div className="text-xs text-muted-foreground font-mono">FOCUS AREAS</div>
+              <SectionHeading icon={Target}>FOCUS AREAS</SectionHeading>
               <div className="flex flex-wrap gap-2">
                 {["EHS", "Industrial Operations", "Critical Infrastructure", "Data Centers", "Risk", "GRC", "Facilities Ops", "HSE", "AI", "RPA", "Automation", "Software", "Legal", "Insurance Risk", "ESG", "Safety", "Health", "Environmental", "Stewardship", "Sustainability"].map((skill) => (
                   <span
@@ -153,7 +173,7 @@ export default function Home() {
 
           {/* Right: Contact */}
           <div className="space-y-3">
-            <div className="text-xs text-muted-foreground font-mono">CONNECT</div>
+            <SectionHeading icon={Link2}>CONNECT</SectionHeading>
             <div className="space-y-2">
               <Link
                 href="https://www.linkedin.com/in/aarongwest/"
@@ -195,7 +215,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {/* About */}
           <div className="space-y-3 md:col-span-2 lg:col-span-3">
-            <div className="text-xs text-muted-foreground font-mono">EXPERTISE</div>
+            <SectionHeading icon={HardHat}>EXPERTISE</SectionHeading>
             <p className="text-sm text-muted-foreground leading-relaxed">
               20+ years in EHS and industrial operations — standing up the safety and compliance programs that keep industrial sites, manufacturing facilities, and data centers running without legal or regulatory trouble.
             </p>
@@ -205,7 +225,7 @@ export default function Home() {
         {/* Projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           <div className="space-y-3 md:col-span-2 lg:col-span-3">
-            <div className="text-xs text-muted-foreground font-mono">PROJECTS</div>
+            <SectionHeading icon={Boxes}>PROJECTS</SectionHeading>
             <div className="space-y-3">
               {projects.map((p) => (
                 <Link
@@ -243,7 +263,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           {story.map((item) => (
             <div key={item.q} className="space-y-3 md:col-span-2 lg:col-span-3">
-              <div className="text-xs text-muted-foreground font-mono">{item.q.toUpperCase()}</div>
+              <SectionHeading icon={storyIcons[item.q] ?? Compass}>{item.q.toUpperCase()}</SectionHeading>
               <p className="text-sm text-muted-foreground leading-relaxed">{item.a}</p>
             </div>
           ))}
@@ -252,7 +272,7 @@ export default function Home() {
         {/* Endgame */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
           <div className="space-y-3 md:col-span-2 lg:col-span-3">
-            <div className="text-xs text-muted-foreground font-mono">REVERSE ENGINEERING THE ENDGAME</div>
+            <SectionHeading icon={Rocket}>REVERSE ENGINEERING THE ENDGAME</SectionHeading>
             {endgame.map((line) => (
               <p key={line} className="text-sm text-muted-foreground leading-relaxed">{line}</p>
             ))}
